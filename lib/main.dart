@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'screens/asistente_screen.dart';
+
 void main() => runApp(const IncupoApp());
 
-/// Entrada mínima. El asistente se construirá sobre el motor validado.
+/// El estado del asistente vive únicamente durante esta sesión.
 class IncupoApp extends StatelessWidget {
   const IncupoApp({super.key});
 
@@ -13,18 +15,20 @@ class IncupoApp extends StatelessWidget {
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF246444)),
       useMaterial3: true,
-    ),
-    home: Scaffold(
-      appBar: AppBar(title: const Text('INCUPO Costos')),
-      body: const SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(24),
-          child: Text(
-            'Calculá los costos de tu producto y obtené un precio de venta orientativo.',
-            style: TextStyle(fontSize: 22),
-          ),
-        ),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(),
+        errorMaxLines: 4,
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(minimumSize: const Size(0, 52)),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(minimumSize: const Size(0, 52)),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(minimumSize: const Size(48, 48)),
       ),
     ),
+    home: const AsistenteScreen(),
   );
 }
