@@ -16,8 +16,8 @@ class CalculadoraService {
     Validators.produccion(calculo.cantidadMensual);
     Validators.noNegativo(calculo.tasaGanancia, 'La tasa de ganancia');
 
-    final variables = _sumar(calculo.costosVariables);
-    final fijos = _sumar(calculo.costosFijos);
+    final variables = sumarCostos(calculo.costosVariables);
+    final fijos = sumarCostos(calculo.costosFijos);
     final total = Validators.resultadoFinito(variables + fijos);
     final variableUnitario = Validators.resultadoFinito(
       variables / calculo.cantidadMensual,
@@ -86,7 +86,8 @@ class CalculadoraService {
     return ResultadoEquilibrio.disponible(cantidad);
   }
 
-  double _sumar(List<ItemCosto> items) {
+  /// Reutiliza la misma validación y suma para los subtotales del asistente.
+  double sumarCostos(List<ItemCosto> items) {
     var suma = 0.0;
     for (final item in items) {
       Validators.textoObligatorio(item.concepto, 'el concepto de cada costo');
