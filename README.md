@@ -4,7 +4,7 @@ Calculadora de costos mensuales para emprendedores, basada en la planilla de INC
 
 ## Estado de esta entrega
 
-Etapa inicial: proyecto Flutter/Android, modelos, motor Dart puro y pruebas matemáticas. La amortización está resuelta como costo fijo mensual manual. `main.dart` contiene solamente una presentación mínima, sin formularios ni navegación. Todavía **no** están implementados el asistente, el controller, el formato de resultados en pantalla ni el servicio PDF. No se generó una APK ni se probó en un teléfono.
+Etapa 2: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Todavía no se implementó el PDF ni el diseño visual definitivo. No se generó una APK ni se probó en un teléfono.
 
 Entorno utilizado: Flutter **3.47.5**, Dart **3.13.4**, canal stable. Dependencias resueltas en `pubspec.lock`.
 
@@ -40,7 +40,11 @@ flutter test --coverage
 flutter analyze
 ```
 
-Se implementaron **47 pruebas** y pasaron. `flutter analyze` finalizó sin observaciones. El caso de pan compara los 12 resultados relevantes del Excel con tolerancia absoluta de `1e-8`, usando los valores completos, sin redondearlos previamente.
+Las **47 pruebas originales** del motor se conservan sin modificaciones. Se agregaron **8 pruebas del controller, 3 de formato/entrada y 4 del recorrido de widgets**, para un total de **62 pruebas**. El caso de pan compara los 12 resultados relevantes del Excel con tolerancia absoluta de `1e-8`, usando los valores completos, sin redondearlos previamente.
+
+Verificación final de la etapa: **62 pruebas aprobadas** y **`flutter analyze` sin observaciones**.
+
+Las pruebas del asistente usan un tamaño de teléfono de 390 × 844: carga de producto y gastos, resultados, navegación hacia atrás (también botón del sistema), cambio de costo y recálculo, cancelar/confirmar reinicio, validaciones visibles, edición y eliminación, listas vacías, unidad personalizada y porcentaje mayor a 100. Son pruebas de widgets, no una prueba física de Android.
 
 Cobertura funcional de las pruebas:
 
@@ -85,14 +89,24 @@ La amortización se ingresa como un ítem fijo normal: concepto `Amortización d
 
 Se exige nombre de producto y unidad no vacíos, producción finita mayor que cero, conceptos de ítems completos y cantidades, precios y tasa finitos no negativos. Una lista vacía es válida; un ítem sin concepto no lo es. Los campos numéricos de los modelos son obligatorios y no nullable: el futuro formulario deberá validar texto vacío antes de construirlos.
 
-`porcentajeATasa(4)` devuelve `0.04`; el motor ya recibe la fracción y no vuelve a dividir por 100. No se redondean operaciones intermedias. La presentación argentina con dos decimales se implementará en la siguiente etapa, reutilizando los resultados completos para el PDF. Los resultados matemáticamente no disponibles incluyen `null` y un motivo legible, sin NaN/Infinity. Los datos inválidos o desbordamientos del cálculo principal producen `ValidacionException`.
+`porcentajeATasa(4)` devuelve `0.04`; el motor ya recibe la fracción y no vuelve a dividir por 100. No se redondean operaciones intermedias. El helper `formatters.dart` presenta dinero, porcentajes y cantidades con formato argentino y dos decimales, sin modificar valores internos. Los resultados matemáticamente no disponibles incluyen `null` y un motivo legible, sin NaN/Infinity. Los datos inválidos o desbordamientos del cálculo principal producen `ValidacionException`, mostrada con un mensaje comprensible junto al formulario.
+
+Los campos numéricos aceptan coma o punto decimal **sin separador de miles**, indicado junto a cada campo. Así `1500,50` y `1500.50` representan lo mismo; `1.500` es decimal, no se interpreta silenciosamente como mil quinientos. El formato de salida sí agrupa miles. No se agregaron dependencias.
+
+## Estado, navegación y gastos
+
+`CalculoController` extiende `ChangeNotifier` y pertenece al asistente. Conserva en memoria los textos de producto, producción, unidad y ganancia, incluso cuando todavía están incompletos. Las listas de costos solo reciben ítems completos y válidos; su edición se valida antes de reemplazar el ítem anterior. Las listas expuestas son inmutables.
+
+Cada cambio invalida el resultado anterior. “Ver resultados” construye `CalculoCostos`, convierte el porcentaje mediante el helper existente y llama una sola vez a `CalculadoraService`. Volver atrás no recalcula ni reinicia el borrador. Los subtotales y la vista previa del costo usan `sumarCostos`, la misma suma validada del motor que antes era privada: solo se cambió su visibilidad/nombre, sin alterar fórmulas.
+
+El asistente administra cinco pasos y un inicio. `PopScope` devuelve al paso anterior con el botón del sistema. El editor de costos es una ruta independiente con campos desplazables, total automático, Guardar y Cancelar. Cancelar descarta únicamente la edición sin guardar. Variables y fijos comparten pantalla parametrizada, tarjetas y editor. Eliminar pide confirmación. “Nuevo cálculo” también confirma, limpia el controller y vuelve a Inicio; cancelar conserva los datos.
 
 ## Estructura actual
 
 ```text
 android/                         Base nativa generada por Flutter
 lib/
-  main.dart                      Entrada mínima de INCUPO
+  main.dart                      Tema y entrada al asistente
   models/
     item_costo.dart               Ítem inmutable, total derivado
     calculo_costos.dart           Producto mensual y listas inmutables
@@ -102,8 +116,25 @@ lib/
   utils/
     validators.dart              Validaciones y mensajes
     porcentajes.dart             Conversión entre porcentaje y fracción
+    formatters.dart              Formato argentino y entrada numérica
+  state/calculo_controller.dart  Borrador temporal y operaciones de costos
+  screens/
+    asistente_screen.dart        Navegación y ciclo de vida del controller
+    inicio_screen.dart
+    producto_screen.dart
+    costos_screen.dart           Compartida por variables y fijos
+    ganancia_screen.dart
+    resultado_screen.dart
+  widgets/
+    paso_layout.dart             Progreso, contenido desplazable y botones
+    campo_numerico.dart
+    item_costo_card.dart
+    editor_costo.dart
 test/
   calculadora_service_test.dart   Pruebas de negocio y límites
+  calculo_controller_test.dart    Estado, CRUD, recálculo y limpieza
+  formatters_test.dart            Formato y parseo de entradas
+  asistente_test.dart             Recorridos funcionales en tamaño móvil
   fixtures/caso_pan.dart          Datos del Excel
 docs/
   analisis_excel.md               Análisis y decisión actualizada
@@ -130,4 +161,4 @@ flutter build apk --release
 
 Salida esperada: `build/app/outputs/flutter-apk/app-release.apk`. También se puede usar `.\tools\flutter.cmd build apk --release` en Windows. El comando todavía no se validó aquí porque falta el Android SDK. La configuración generada utiliza temporalmente firma debug para release; antes de distribuir la versión final se debe configurar una clave de firma propia y conservarla fuera de Git. El icono sigue siendo el de la plantilla de Flutter.
 
-Siguiente etapa: controller en memoria y asistente **Inicio → Producto → Variables → Fijos → Ganancia → Resultados**. Después, PDF offline con datos ya calculados, revisión de accesibilidad, icono, prueba en Android y APK. No agregar persistencia ni servicios externos.
+Siguiente etapa: PDF offline a partir de `controller.calculo` y `controller.resultado`, sin recalcular reglas; después pulido visual, revisión de accesibilidad en dispositivo, icono y APK. Para probar físicamente faltan instalar/configurar Android SDK y herramientas, aceptar sus licencias y conectar un teléfono con depuración USB o un emulador. No se instaló Android SDK en esta etapa. No agregar persistencia ni servicios externos.
