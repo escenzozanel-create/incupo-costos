@@ -1,0 +1,22 @@
+# SDK y cachés locales (no forman parte de la aplicación)
+.local/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+*.log
+*.iml
+.idea/
+.DS_Store
+__pycache__/
+*.pyc
+android/.gradle/
+android/captures/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+

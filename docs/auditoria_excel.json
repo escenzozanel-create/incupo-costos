@@ -1,0 +1,3742 @@
+{
+  "metadata": {
+    "sha256": "1f06ff91b8b4803d751a500dae819183eaaf022937de40dfe59b108ae0db3001",
+    "file": "NUEVA PLANILLA DE COSTOS  PAN ultimo (1).xlsx",
+    "sheets": [
+      {
+        "name": "COSTOS VARIABLES",
+        "sheetId": "2",
+        "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+      },
+      {
+        "name": "PUNTO EQUILIBRIO",
+        "sheetId": "6",
+        "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId2"
+      }
+    ],
+    "calculation": {
+      "calcId": "191029"
+    },
+    "package_parts": [
+      "[Content_Types].xml",
+      "_rels/.rels",
+      "xl/workbook.xml",
+      "xl/_rels/workbook.xml.rels",
+      "xl/worksheets/sheet1.xml",
+      "xl/worksheets/sheet2.xml",
+      "xl/theme/theme1.xml",
+      "xl/styles.xml",
+      "xl/sharedStrings.xml",
+      "xl/drawings/drawing1.xml",
+      "xl/drawings/drawing2.xml",
+      "xl/worksheets/_rels/sheet1.xml.rels",
+      "xl/worksheets/_rels/sheet2.xml.rels",
+      "xl/printerSettings/printerSettings1.bin",
+      "xl/calcChain.xml",
+      "docProps/core.xml",
+      "docProps/app.xml"
+    ]
+  },
+  "cells": {
+    "COSTOS VARIABLES": {
+      "B1": {
+        "value": "PLANIFLLA PARA FIJAR COSTOS Y PRECIOS PARA ECONOMÍA SOCIAL ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "C1": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "D1": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "E1": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "F1": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "G1": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "B2": {
+        "value": "(para trabajar con un producto a la vez)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "C2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "D2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "E2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "F2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "G2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "7"
+      },
+      "B3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "C3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "E3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "F3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G3": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B4": {
+        "value": "Seguí estos 4 pasos. Solo completá SOLO LOS CASILLEROS PINTADOS EN VERDE",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "C4": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "D4": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "E4": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "F4": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "B5": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B6": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B7": {
+        "value": "PASO - 1 ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "H7": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I7": {
+        "value": "PASO - 3",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "B8": {
+        "value": "TU PRODUCCIÓN: ¿qué producto haces? ¿cuánto producis por mes? ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I8": {
+        "value": "GANANCIA ¿cuánto pretendo ganar? ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B9": {
+        "value": "Si conoces solo cuánto producis por semana multiplicalo por 4, ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K9": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L9": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B10": {
+        "value": "si conoces la producción diaria muliplicalo por la cantidad de días producidas en el mes",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I10": {
+        "value": "GANANCIA - UTILIDAD porcentaje (Esperada)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J10": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K10": {
+        "value": 0.04,
+        "formula": null,
+        "format_id": "10",
+        "fill_id": "4"
+      },
+      "L10": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B11": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I11": {
+        "value": "GANANCIA por unidad (en pesos)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J11": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K11": {
+        "value": 90.52589743589745,
+        "formula": "+C75*K10",
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "B12": {
+        "value": "Bienes producidos: ej pan, pan dulce, dulces, remeras, etc",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C12": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D12": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E12": {
+        "value": "Cantidad producida por mes: kg, unidad, docenas, litros, etc.   En este casillero colocá solo números",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F12": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G12": {
+        "value": 1560.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "B13": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C13": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E13": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I13": {
+        "value": "PASO - 4",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "B14": {
+        "value": "PASO - 2",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "I14": {
+        "value": "PRECIO: Determinar el precio  del producto (costo totsl unitario + Ganancia por unidad)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J14": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K14": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B15": {
+        "value": "¿EN QUÉ GASTÁS PARA PRODUCIR? (Costos)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B16": {
+        "value": "Anotá TODO lo que usás para producir (aunque parezca poco)”",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I16": {
+        "value": "PRECIO FINAL POR UNIDAD ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "J16": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "K16": {
+        "value": 2353.6733333333336,
+        "formula": "+C75+K11",
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "L16": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B17": {
+        "value": "Cambiá los itms que aparecen en la planilla a modo de ejemplo.",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B18": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D18": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "E18": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "F18": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G18": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B19": {
+        "value": "A- COSTOS VARIABLES: Son los gastos que aumentan o disminuyen según cuánto producís.",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "C19": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D19": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "E19": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "F19": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G19": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I19": {
+        "value": "PASO - 5",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "C20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "E20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "F20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I20": {
+        "value": "INGRESOS MENSUAL ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B21": {
+        "value": "Insumos",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "C21": {
+        "value": "Cantidad",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "D21": {
+        "value": "Precio Unitario",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "E21": {
+        "value": "Total",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "F21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L21": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B22": {
+        "value": "Harina Bolsa 25 kg",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C22": {
+        "value": 48.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D22": {
+        "value": 21900.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E22": {
+        "value": 1051200.0,
+        "formula": "+C22*D22",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "F22": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G22": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I22": {
+        "value": "Producto o Servicio ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "J22": {
+        "value": "Cantidad",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "K22": {
+        "value": "Precio Vta.",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "L22": {
+        "value": "Total ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "B23": {
+        "value": "Levadura seca 20 gs",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C23": {
+        "value": 192.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D23": {
+        "value": 950.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E23": {
+        "value": 182400.0,
+        "formula": "+C23*D23",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "F23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "J23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "K23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "L23": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "B24": {
+        "value": "Sal kg",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C24": {
+        "value": 24.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D24": {
+        "value": 1500.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E24": {
+        "value": 36000.0,
+        "formula": "+C24*D24",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "F24": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G24": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I24": {
+        "value": "PAN (KG)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J24": {
+        "value": 1560.0,
+        "formula": "G12",
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K24": {
+        "value": 2353.6733333333336,
+        "formula": "+K16",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "L24": {
+        "value": 3671730.4000000004,
+        "formula": "+J24*K24",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B25": {
+        "value": "Grasa kg",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C25": {
+        "value": 120.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D25": {
+        "value": 4450.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E25": {
+        "value": 534000.0,
+        "formula": "+C25*D25",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "F25": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "G25": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I25": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J25": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K25": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L25": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B26": {
+        "value": "Gas tubo 45 kg",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C26": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D26": {
+        "value": 69000.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E26": {
+        "value": 69000.0,
+        "formula": "+C26*D26",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H26": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I26": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J26": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K26": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L26": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B27": {
+        "value": "Bolsitas ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C27": {
+        "value": 1560.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D27": {
+        "value": 45.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E27": {
+        "value": 70200.0,
+        "formula": "+C27*D27",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I27": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J27": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K27": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L27": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B28": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C28": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D28": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E28": {
+        "value": 0.0,
+        "formula": "+C28*D28",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H28": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I28": {
+        "value": "TOTAL ventas mensuales",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J28": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K28": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L28": {
+        "value": 3671730.4000000004,
+        "formula": "SUM(L24:L27)",
+        "format_id": "164",
+        "fill_id": "3"
+      },
+      "B29": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C29": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D29": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E29": {
+        "value": 0.0,
+        "formula": "+C29*D29",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I29": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J29": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K29": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L29": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B30": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C30": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D30": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E30": {
+        "value": 0.0,
+        "formula": "+C30*D30",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I30": {
+        "value": "PASO - 6",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "8"
+      },
+      "J30": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K30": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L30": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B31": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C31": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D31": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E31": {
+        "value": 0.0,
+        "formula": "+C31*D31",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I31": {
+        "value": "RESULTADO",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J31": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K31": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L31": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B32": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C32": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D32": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E32": {
+        "value": 0.0,
+        "formula": "+C32*D32",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I32": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J32": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K32": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B33": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C33": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D33": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E33": {
+        "value": 0.0,
+        "formula": "+C33*D33",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I33": {
+        "value": "CONCEPTOS",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "J33": {
+        "value": "IMPORTE",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "K33": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "B34": {
+        "value": "Otros costos Variables",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "5"
+      },
+      "C34": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D34": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "E34": {
+        "value": 0.0,
+        "formula": "+C34*D34",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I34": {
+        "value": "Ventas                                         ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J34": {
+        "value": 3671730.4000000004,
+        "formula": "+L28",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "K34": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "L34": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B35": {
+        "value": "Combustible",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C35": {
+        "value": 10.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D35": {
+        "value": 2045.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E35": {
+        "value": 20450.0,
+        "formula": "+C35*D35",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I35": {
+        "value": "Costos Totales                             ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J35": {
+        "value": 3530510.0,
+        "formula": "+C73",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "K35": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "L35": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B36": {
+        "value": "Servicios ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C36": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D36": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E36": {
+        "value": 0.0,
+        "formula": "+C36*D36",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "I36": {
+        "value": "Utilidad del Emprendimiento    ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J36": {
+        "value": 141220.40000000037,
+        "formula": "+J34-J35",
+        "format_id": "164",
+        "fill_id": "3"
+      },
+      "K36": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "3"
+      },
+      "L36": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B37": {
+        "value": "Viáticos",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C37": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D37": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E37": {
+        "value": 0.0,
+        "formula": "+C37*D37",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H37": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I37": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J37": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K37": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L37": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "2"
+      },
+      "B38": {
+        "value": "Transporte",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C38": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D38": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E38": {
+        "value": 0.0,
+        "formula": "+C38*D38",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H38": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I38": {
+        "value": "GANANCIA LOGRADA",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J38": {
+        "value": 0.040000000000000105,
+        "formula": "+J36/J35",
+        "format_id": "10",
+        "fill_id": "3"
+      },
+      "K38": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "L38": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "2"
+      },
+      "B39": {
+        "value": "Jornales Temporales",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C39": {
+        "value": 72.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D39": {
+        "value": 5830.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E39": {
+        "value": 419760.0,
+        "formula": "+C39*D39",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H39": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I39": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J39": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K39": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L39": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "2"
+      },
+      "B40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C40": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D40": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E40": {
+        "value": 0.0,
+        "formula": "+C40*D40",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L40": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C41": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D41": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E41": {
+        "value": 0.0,
+        "formula": "+C41*D41",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L41": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C42": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D42": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E42": {
+        "value": 0.0,
+        "formula": "+C42*D42",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L42": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B43": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C43": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D43": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E43": {
+        "value": 0.0,
+        "formula": "+C43*D43",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H43": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I43": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J43": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K43": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L43": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B44": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C44": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D44": {
+        "value": 0.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E44": {
+        "value": 0.0,
+        "formula": "+C44*D44",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H44": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I44": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J44": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K44": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L44": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B45": {
+        "value": " Costos Variables Totales - CVT",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C45": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D45": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E45": {
+        "value": 2383010.0,
+        "formula": "SUM(E22:E44)",
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "H45": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I45": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J45": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "K45": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "L45": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B46": {
+        "value": " Costos Variables Unitarios - CVU",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E46": {
+        "value": 1527.570512820513,
+        "formula": "+E45/G12",
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "H46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L46": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E47": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "2"
+      },
+      "H47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L47": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G48": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "I48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "J48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "K48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "L48": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B49": {
+        "value": "B- COSTOS FIJOS: Son los gastos que tenés aunque no produzcas nada. ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D49": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E49": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F49": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G49": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B50": {
+        "value": "No cambian según la cantidad que producís.",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D50": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E50": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F50": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G50": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B51": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D51": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E51": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F51": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G51": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B52": {
+        "value": "Costos Fijos ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C52": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D52": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E52": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B53": {
+        "value": "Concepto",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "C53": {
+        "value": "Cantidad",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "D53": {
+        "value": "Precio Unitario",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "E53": {
+        "value": "Importe ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "B54": {
+        "value": "Remuneración del propietario ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C54": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D54": {
+        "value": 850000.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E54": {
+        "value": 850000.0,
+        "formula": "+C54*D54",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B55": {
+        "value": "Remuneración empleados fijos ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C55": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D55": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E55": {
+        "value": 0.0,
+        "formula": "+C55*D55",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B56": {
+        "value": "Seguros (Incendio)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C56": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D56": {
+        "value": 9500.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E56": {
+        "value": 9500.0,
+        "formula": "+C56*D56",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B57": {
+        "value": "Servicios (Luz , Agua, etc)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C57": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D57": {
+        "value": 75000.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E57": {
+        "value": 75000.0,
+        "formula": "+C57*D57",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B58": {
+        "value": "Impuestos Específicos -Montributo",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C58": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D58": {
+        "value": 63000.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E58": {
+        "value": 63000.0,
+        "formula": "+C58*D58",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B59": {
+        "value": "Alquileres",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C59": {
+        "value": 1.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D59": {
+        "value": 150000.0,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E59": {
+        "value": 150000.0,
+        "formula": "+C59*D59",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B60": {
+        "value": "Amortización de bienes (#)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C60": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D60": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E60": {
+        "value": 0.0,
+        "formula": "+I77",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E61": {
+        "value": 0.0,
+        "formula": "+C61*D61",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "I61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "J61": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "K61": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B62": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "C62": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "D62": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "6"
+      },
+      "E62": {
+        "value": 0.0,
+        "formula": "+C62*D62",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "H62": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "B63": {
+        "value": "Otros",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C63": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D63": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "E63": {
+        "value": 0.0,
+        "formula": "+C63*D63",
+        "format_id": "44",
+        "fill_id": "0"
+      },
+      "B64": {
+        "value": "Total costos Fijos-   CFT",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C64": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D64": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E64": {
+        "value": 1147500.0,
+        "formula": "SUM(E54:E63)",
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "B65": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C65": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D65": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E65": {
+        "value": null,
+        "formula": null,
+        "format_id": "44",
+        "fill_id": "3"
+      },
+      "D66": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E66": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F66": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G66": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B67": {
+        "value": "C- RESUMEN DE COSTOS Y CALCULO DEL COSTO UNITARIO DEL PRODUCTO",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D67": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E67": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F67": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G67": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B68": {
+        "value": "(Sin incluir la ganancia)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D68": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E68": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F68": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G68": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B69": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "2"
+      },
+      "D69": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E69": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F69": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G69": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B70": {
+        "value": "CONCEPTOS",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "C70": {
+        "value": "IMPORTE",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "3"
+      },
+      "F70": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G70": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B71": {
+        "value": "Costos Variables Totales",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C71": {
+        "value": 2383010.0,
+        "formula": "+E45",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "F71": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G71": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B72": {
+        "value": "Costos Fijos Totales",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C72": {
+        "value": 1147500.0,
+        "formula": "+E64",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "F72": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G72": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B73": {
+        "value": "Costos Totales ",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C73": {
+        "value": 3530510.0,
+        "formula": "SUM(C71:C72)",
+        "format_id": "164",
+        "fill_id": "3"
+      },
+      "F73": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G73": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B74": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C74": {
+        "value": null,
+        "formula": null,
+        "format_id": "164",
+        "fill_id": "2"
+      },
+      "F74": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G74": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B75": {
+        "value": "COSTO TOTAL UNITARIO",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "5"
+      },
+      "C75": {
+        "value": 2263.147435897436,
+        "formula": "+C73/G12",
+        "format_id": "164",
+        "fill_id": "5"
+      },
+      "F75": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G75": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D76": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E76": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F76": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G76": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F77": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G77": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F78": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G78": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F79": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G79": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F80": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G80": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F81": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G81": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F82": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G82": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F83": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G83": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F84": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G84": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D103": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E103": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F103": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G103": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D104": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E104": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F104": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G104": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D105": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E105": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F105": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G105": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D106": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E106": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F106": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G106": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D107": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E107": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F107": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G107": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D108": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E108": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F108": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G108": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D109": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E109": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F109": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G109": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D110": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E110": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F110": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G110": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D111": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E111": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F111": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G111": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D112": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E112": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F112": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G112": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D113": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E113": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "F113": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "G113": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      }
+    },
+    "PUNTO EQUILIBRIO": {
+      "B2": {
+        "value": "PUNTO DE EQUILIBRIO",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "D2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "E2": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B7": {
+        "value": "PE= CFT/(PV-CVU)",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C7": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B9": {
+        "value": "CFT",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C9": {
+        "value": 1147500.0,
+        "formula": "+'COSTOS VARIABLES'!C72",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B10": {
+        "value": "PV",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C10": {
+        "value": 2353.6733333333336,
+        "formula": "+'COSTOS VARIABLES'!K16",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "D10": {
+        "value": 826.1028205128207,
+        "formula": "+C10-C11",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B11": {
+        "value": "CVU",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "C11": {
+        "value": 1527.570512820513,
+        "formula": "+'COSTOS VARIABLES'!E46",
+        "format_id": "164",
+        "fill_id": "0"
+      },
+      "B13": {
+        "value": "PE =",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "4"
+      },
+      "C13": {
+        "value": 1389.0522723160118,
+        "formula": "+C9/(C10-C11)",
+        "format_id": "2",
+        "fill_id": "4"
+      },
+      "D13": {
+        "value": "KG DE PAN",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "4"
+      },
+      "B15": {
+        "value": "PE: Punto de  Equilibrio",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B16": {
+        "value": "PV: Precion de Venta",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B17": {
+        "value": "CVU: Costo Variable Unitario",
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      },
+      "B20": {
+        "value": null,
+        "formula": null,
+        "format_id": "0",
+        "fill_id": "0"
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E22",
+      "formula": "=+C22*D22",
+      "cached": 1051200.0,
+      "calculated": 1051200.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E23",
+      "formula": "=+C23*D23",
+      "cached": 182400.0,
+      "calculated": 182400.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E24",
+      "formula": "=+C24*D24",
+      "cached": 36000.0,
+      "calculated": 36000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E25",
+      "formula": "=+C25*D25",
+      "cached": 534000.0,
+      "calculated": 534000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E26",
+      "formula": "=+C26*D26",
+      "cached": 69000.0,
+      "calculated": 69000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E27",
+      "formula": "=+C27*D27",
+      "cached": 70200.0,
+      "calculated": 70200.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E28",
+      "formula": "=+C28*D28",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E29",
+      "formula": "=+C29*D29",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E30",
+      "formula": "=+C30*D30",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E31",
+      "formula": "=+C31*D31",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E32",
+      "formula": "=+C32*D32",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E33",
+      "formula": "=+C33*D33",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E34",
+      "formula": "=+C34*D34",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E35",
+      "formula": "=+C35*D35",
+      "cached": 20450.0,
+      "calculated": 20450.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E36",
+      "formula": "=+C36*D36",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E37",
+      "formula": "=+C37*D37",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E38",
+      "formula": "=+C38*D38",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E39",
+      "formula": "=+C39*D39",
+      "cached": 419760.0,
+      "calculated": 419760.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E40",
+      "formula": "=+C40*D40",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E41",
+      "formula": "=+C41*D41",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E42",
+      "formula": "=+C42*D42",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E43",
+      "formula": "=+C43*D43",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E44",
+      "formula": "=+C44*D44",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E45",
+      "formula": "=SUM(E22:E44)",
+      "cached": 2383010.0,
+      "calculated": 2383010.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "C71",
+      "formula": "=+E45",
+      "cached": 2383010.0,
+      "calculated": 2383010.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E54",
+      "formula": "=+C54*D54",
+      "cached": 850000.0,
+      "calculated": 850000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E55",
+      "formula": "=+C55*D55",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E56",
+      "formula": "=+C56*D56",
+      "cached": 9500.0,
+      "calculated": 9500.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E57",
+      "formula": "=+C57*D57",
+      "cached": 75000.0,
+      "calculated": 75000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E58",
+      "formula": "=+C58*D58",
+      "cached": 63000.0,
+      "calculated": 63000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E59",
+      "formula": "=+C59*D59",
+      "cached": 150000.0,
+      "calculated": 150000.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E60",
+      "formula": "=+I77",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E61",
+      "formula": "=+C61*D61",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E62",
+      "formula": "=+C62*D62",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E63",
+      "formula": "=+C63*D63",
+      "cached": 0.0,
+      "calculated": 0.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E64",
+      "formula": "=SUM(E54:E63)",
+      "cached": 1147500.0,
+      "calculated": 1147500.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "C72",
+      "formula": "=+E64",
+      "cached": 1147500.0,
+      "calculated": 1147500.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "C73",
+      "formula": "=SUM(C71:C72)",
+      "cached": 3530510.0,
+      "calculated": 3530510.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "C75",
+      "formula": "=+C73/G12",
+      "cached": 2263.147435897436,
+      "calculated": 2263.147435897436,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "K11",
+      "formula": "=+C75*K10",
+      "cached": 90.52589743589745,
+      "calculated": 90.52589743589745,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "K16",
+      "formula": "=+C75+K11",
+      "cached": 2353.6733333333336,
+      "calculated": 2353.6733333333336,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "J24",
+      "formula": "=G12",
+      "cached": 1560.0,
+      "calculated": 1560.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "K24",
+      "formula": "=+K16",
+      "cached": 2353.6733333333336,
+      "calculated": 2353.6733333333336,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "L24",
+      "formula": "=+J24*K24",
+      "cached": 3671730.4000000004,
+      "calculated": 3671730.4000000004,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "L28",
+      "formula": "=SUM(L24:L27)",
+      "cached": 3671730.4000000004,
+      "calculated": 3671730.4000000004,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "J34",
+      "formula": "=+L28",
+      "cached": 3671730.4000000004,
+      "calculated": 3671730.4000000004,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "J35",
+      "formula": "=+C73",
+      "cached": 3530510.0,
+      "calculated": 3530510.0,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "J36",
+      "formula": "=+J34-J35",
+      "cached": 141220.40000000037,
+      "calculated": 141220.40000000037,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "J38",
+      "formula": "=+J36/J35",
+      "cached": 0.040000000000000105,
+      "calculated": 0.040000000000000105,
+      "matches": true
+    },
+    {
+      "sheet": "COSTOS VARIABLES",
+      "cell": "E46",
+      "formula": "=+E45/G12",
+      "cached": 1527.570512820513,
+      "calculated": 1527.570512820513,
+      "matches": true
+    },
+    {
+      "sheet": "PUNTO EQUILIBRIO",
+      "cell": "C9",
+      "formula": "=+'COSTOS VARIABLES'!C72",
+      "cached": 1147500.0,
+      "calculated": 1147500.0,
+      "matches": true
+    },
+    {
+      "sheet": "PUNTO EQUILIBRIO",
+      "cell": "C10",
+      "formula": "=+'COSTOS VARIABLES'!K16",
+      "cached": 2353.6733333333336,
+      "calculated": 2353.6733333333336,
+      "matches": true
+    },
+    {
+      "sheet": "PUNTO EQUILIBRIO",
+      "cell": "C11",
+      "formula": "=+'COSTOS VARIABLES'!E46",
+      "cached": 1527.570512820513,
+      "calculated": 1527.570512820513,
+      "matches": true
+    },
+    {
+      "sheet": "PUNTO EQUILIBRIO",
+      "cell": "D10",
+      "formula": "=+C10-C11",
+      "cached": 826.1028205128207,
+      "calculated": 826.1028205128207,
+      "matches": true
+    },
+    {
+      "sheet": "PUNTO EQUILIBRIO",
+      "cell": "C13",
+      "formula": "=+C9/(C10-C11)",
+      "cached": 1389.0522723160118,
+      "calculated": 1389.0522723160118,
+      "matches": true
+    }
+  ],
+  "blank_references": [
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E55",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "C55"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E55",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "D55"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E60",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "I77"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E61",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "C61"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E61",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "D61"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E62",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "C62"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E62",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "D62"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E63",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "C63"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "E63",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "D63"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "L28",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "L25"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "L28",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "L26"
+    },
+    {
+      "formula_sheet": "COSTOS VARIABLES",
+      "formula_cell": "L28",
+      "source_sheet": "COSTOS VARIABLES",
+      "source_cell": "L27"
+    }
+  ]
+}
