@@ -2,20 +2,27 @@
 
 Calculadora de costos mensuales para emprendedores, basada en la planilla de INCUPO. App Android en Flutter, offline, sin cuentas, servidor, base de datos ni historial persistente. El cálculo puede conservarse mediante un PDF.
 
-## Estado de esta entrega
+## Estado
 
-Preparación Android: Android Studio instalado, identidad conservada y firma externa preparada. **Android toolchain correcto y licencias aceptadas**. Flutter usa `C:/Android/Sdk`, enlace al SDK del perfil para evitar espacios en la ruta: API 36 para la app, API 34 requerida por printing, Build-Tools 36.0.0 y NDK `28.2.13676358`. **App debug probada en emulador Android 16, incluido PDF offline y guardado nativo.** La firma release y las pruebas físicas siguen pendientes. Ver el [registro y guía de cierre Android](docs/cierre_android.md).
+**INCUPO Costos 1.0 técnicamente terminada (1.0.0+1).** APK release generada, firmada y verificada con `apksigner`, instalada y abierta independientemente en el emulador Android 16. Smoke test release aprobado: cálculo, recálculo, PDF, selector de compartir, guardado nativo, nuevo cálculo y funcionamiento offline. Android toolchain correcto, licencias aceptadas, **76 pruebas aprobadas** (71 originales + 5 de integración) y análisis sin observaciones. No quedan pendientes bloqueantes. Ver [cierre Android](docs/cierre_android.md).
 
-Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. En la preparación Android posterior se generó la APK debug; todavía no se probó en un teléfono.
+Asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. Validación física en teléfono real pendiente, no bloqueante para el cierre técnico.
 
 Entorno utilizado: Flutter **3.47.5**, Dart **3.13.4**, canal stable. Dependencias resueltas en `pubspec.lock`.
+
+## Tecnologías y características
+
+Flutter, Dart y Android; `pdf ^3.13.1` y `printing ^5.15.1` para documentos locales.
+Cálculo de costos variables y fijos, amortización manual, precio sugerido, utilidad,
+proyección mensual y punto de equilibrio. PDF y funcionamiento offline, sin base de
+datos, registro de usuarios ni servidor. La proyección supone vender toda la producción.
 
 ## Requisitos
 
 - Flutter; en esta máquina se usa el SDK local.
 - Dart incluido con Flutter.
 - Android Studio y Android SDK con Platform, Build-Tools, Platform-Tools y Command-line Tools.
-- Dispositivo Android o emulador; para cerrar esta etapa se requiere al menos un teléfono real.
+- Dispositivo Android 7/API 24 o superior o emulador; la validación física es recomendable y no bloquea el cierre técnico 1.0.
 
 ## Desarrollo
 
@@ -51,7 +58,7 @@ flutter analyze
 
 Las **47 pruebas originales** del motor se conservan sin modificaciones. La etapa 2 agregó **8 pruebas del controller, 3 de formato/entrada y 4 del recorrido de widgets** (62). La etapa 3 agrega **4 de generación PDF, 3 de integración/errores y 2 de disposición móvil**, para un total de **71 pruebas**. Solo se actualizó el texto del botón esperado por un recorrido a «Editar datos». El caso de pan compara los 12 resultados relevantes del Excel con tolerancia absoluta de `1e-8`, usando los valores completos, sin redondearlos previamente.
 
-Verificación final de la etapa: **71 pruebas aprobadas** y **`flutter analyze` sin observaciones**.
+Verificación final: **71 pruebas originales y 5 de integración Android aprobadas (76 en total)** y **`flutter analyze` sin observaciones**. `flutter test` ejecuta las 71; las cinco de Android se ejecutan por separado con `flutter test integration_test/android_test.dart -d emulator-5554`.
 
 Las pruebas del asistente usan un tamaño de teléfono de 390 × 844: carga de producto y gastos, resultados, navegación hacia atrás (también botón del sistema), cambio de costo y recálculo, cancelar/confirmar reinicio, validaciones visibles, edición y eliminación, listas vacías, unidad personalizada y porcentaje mayor a 100. Son pruebas de widgets, no una prueba física de Android.
 
@@ -120,7 +127,7 @@ python -m pip install pypdf pymupdf
 python tools/verificar_pdf.py
 ```
 
-La evidencia queda en `.local/pdf-qa/`, excluida de Git. Se revisaron importes, explicaciones, paginación y límites de texto, además del aspecto de las páginas renderizadas. Las capturas de interfaz se pueden regenerar con `flutter test test/accesibilidad_layout_test.dart --dart-define=CAPTURAR_UI=true`; quedan en `.local/ui-qa/`. Las pruebas nativas usan un canal simulado: compartir, guardar, imprimir y previsualizar requieren una comprobación real en Android.
+La evidencia queda en `.local/pdf-qa/`, excluida de Git. Se revisaron importes, explicaciones, paginación y límites de texto, además del aspecto de las páginas renderizadas. Las capturas de interfaz se pueden regenerar con `flutter test test/accesibilidad_layout_test.dart --dart-define=CAPTURAR_UI=true`; quedan en `.local/ui-qa/`. Los tests de widgets simulan el canal nativo; adicionalmente las cinco pruebas de integración usan Android real en emulador, y el smoke test sobre la APK release verificó vista previa, selector de compartir y guardado nativo. La impresión en papel queda pendiente de una impresora física.
 
 ## Estado, navegación y gastos
 
@@ -177,6 +184,8 @@ docs/
   analisis_excel.md               Análisis y decisión actualizada
   inventario_excel.md             Celdas, fórmulas y valores originales
   auditoria_excel.json            Evidencia estructurada
+  cierre_android.md               Firma, APK release y smoke test final
+integration_test/android_test.dart Recorridos y PDF nativo en Android
 tools/
   analizar_excel.py              Auditoría de solo lectura del XLSX
   flutter.cmd                    Lanzador para Windows
@@ -188,24 +197,26 @@ El original `NUEVA PLANILLA DE COSTOS  PAN ultimo (1).xlsx` permanece en la raí
 
 ## Git
 
-Repositorio local inicializado en la rama `main`. `.gitignore` excluye SDK, cachés, builds, configuración local y claves. `pubspec.lock`, fuentes, documentación y Excel se conservan. No se creó ni publicó un repositorio remoto de GitHub: no se proporcionó un destino.
+Repositorio en la rama `main`, con remoto `origin` configurado. `.gitignore` excluye SDK, cachés, builds, configuración local, claves, APK y AAB. `pubspec.lock`, fuentes, documentación y Excel se conservan. Los commits de este cierre son locales; no se ejecutó un push en esta etapa.
 
 ## APK
 
-Después de configurar Android, probar debug en el teléfono y completar la firma local:
+Con el entorno y la firma local ya configurados:
 
 ```sh
-flutter build apk --debug
 flutter build apk --release
 ```
 
-En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `android/key.properties`, excluido de Git. Para crear una clave propia con contraseña ingresada localmente, ejecutar `powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1`; para una clave existente, completar la plantilla `android/key.properties.example` en el archivo local. La clave queda fuera del repositorio. Su creación interactiva y la validación release siguen pendientes. Release ya no utiliza la firma debug. Ver [firma y validación Android](docs/cierre_android.md).
+En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `android/key.properties`, excluido de Git. La firma de distribución está configurada y validada: **reutilizar esta clave para las actualizaciones**, no crear otra. Respaldar el keystore y la contraseña fuera del repositorio. En otro equipo, restaurar esos archivos de forma privada. El procedimiento de creación inicial es `powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1`, con contraseña ingresada únicamente en la terminal; no volver a ejecutarlo para reemplazar la firma existente. Ver [firma y validación Android](docs/cierre_android.md).
 
 ### Ubicación del APK
 
-APK debug generada y verificada: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.028 bytes (~150 MiB). Es una compilación de desarrollo con firma Android Debug, no una release. Pruebas de esta revisión: **71 aprobadas**, análisis sin observaciones. Ruta absoluta y entorno en [cierre Android](docs/cierre_android.md).
+APK release real: `build/app/outputs/flutter-apk/app-release.apk`, **55.919.121 bytes (53,3 MiB)**. Versión **1.0.0+1**, firma de distribución válida (APK Signature Scheme v2); incluye `armeabi-v7a`, `arm64-v8a` y `x86_64`.
 
-Ruta esperada: `build/app/outputs/flutter-apk/app-release.apk`. **No hay APK release generada ni ruta real o tamaño verificados**: faltan validación física y firma local. Nombre Android conservado: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`. Icono temporal: plantilla Flutter; no hay logo oficial suministrado.
+Ruta absoluta verificada: `C:/Users/Lenovo v15/OneDrive/Escritorio/Practicas profesionalizantes 2/incupoAPK/build/app/outputs/flutter-apk/app-release.apk`.
+SHA-256: `bdcb0239da669f81281dce82f0b35714dabb4307e8ac1afa1a4672370a13174b`.
+Nombre Android: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`.
+Icono oficial pendiente de recurso gráfico institucional; se mantiene el temporal de Flutter.
 
 ### Instalación
 
@@ -222,20 +233,15 @@ El motor, la interfaz y la generación PDF usan recursos locales, incluidas las 
 | Android Studio, SDK, Java y licencias | Ya configurados. **No volver a instalarlos** en esta PC. Flutter usa `C:/Android/Sdk` y el JDK incluido con Android Studio. |
 | Emulador | `INCUPO_API_36` disponible; cinco pruebas de integración aprobadas con Wi-Fi y datos desactivados. |
 | Teléfono físico | Pendiente por disponibilidad. Android 7/API 24 o superior, cable USB de datos, opciones de desarrollador, depuración USB y autorización RSA de esta PC. No requiere cuenta para la app. |
-| Clave de firma release | Pendiente. Ejecutar el comando de abajo e ingresar una contraseña propia **solo en la terminal local**. Respaldar el keystore y la contraseña. |
-| APK release | Se podrá firmar cuando exista la clave. Después verificar firma e instalar; aún no hay artefacto release entregable. |
+| Clave de firma release | Creada y validada. Conservar y respaldar `%LOCALAPPDATA%/INCUPO/signing/incupo-release.jks`, su contraseña y `android/key.properties`; no recrearla. |
+| APK release | Generada, firmada e instalada en emulador. Ruta real en la sección APK. |
 | Validación final física | Completar cálculo, PDF, guardar/compartir, modo avión, teclado y pantallas; repetir smoke test con release instalada desde su icono. |
 | Impresión física | Solo para probar salida en papel: impresora/servicio Android disponible. Guardar como PDF no requiere impresora física. |
 | Icono oficial | Opcional; puede entregarse después. Se mantiene el temporal y no bloquea la compilación. |
 
-Crear la firma desde la raíz del proyecto:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1
-```
-
-Se crean `%LOCALAPPDATA%/INCUPO/signing/incupo-release.jks` y `android/key.properties`.
-No enviar esos archivos ni la contraseña al chat o a Git. Para retomar, indicar que
-la firma fue creada y, cuando sea posible, conectar el teléfono; ejecutar
-`.\tools\flutter.cmd devices` para comprobar su detección. Los detalles y resultados
-están en [docs/cierre_android.md](docs/cierre_android.md).
+No enviar archivos de firma ni contraseñas al chat o a Git. SDK, Java, licencias,
+emulador y firma ya están preparados; no requieren nuevas instalaciones en esta PC.
+Cuando haya teléfono, conectarlo y ejecutar `.\tools\flutter.cmd devices` para comprobar
+su detección. Teléfono físico, icono institucional e impresora real son pendientes no
+bloqueantes; no son funcionalidades faltantes del motor. Los detalles están en
+[docs/cierre_android.md](docs/cierre_android.md).

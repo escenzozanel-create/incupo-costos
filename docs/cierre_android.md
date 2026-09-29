@@ -1,266 +1,178 @@
-# Preparación Android y registro de validación
+# Cierre Android - INCUPO Costos 1.0
 
 ## Estado al 29/09/2026
 
-El entorno Android ya está configurado y la APK debug compila. Esta etapa está **pendiente de pruebas físicas, firma y release**, no es una entrega 1.0.
-Android Studio está instalado en `C:/Program Files/Android/Android Studio` (2026.1.4).
+**INCUPO Costos 1.0 técnicamente terminada (1.0.0+1).** APK generada, firmada, instalada
+en Android 16 y smoke test release aprobado. No quedan pendientes bloqueantes.
+El teléfono físico, el icono institucional y la impresión física no bloquean el cierre técnico.
+No se modificaron fórmulas, motor, fixture de pan ni Excel. El único cambio de la app en esta etapa es su versión.
 
-| Componente o verificación | Resultado |
+## Entorno verificado
+
+| Componente | Resultado |
 |---|---|
-| Flutter / Dart | 3.47.5 stable / 3.13.4; SDK local `.local/flutter` |
-| `flutter doctor -v` | Android toolchain correcto; queda únicamente el aviso de Flutter/Dart fuera del PATH, resuelto operativamente con `tools/flutter.cmd` |
-| Android Studio | Instalado, 2026.1.4; no requiere reinstalación |
-| SDK | `C:/Android/Sdk`, enlace local al SDK en `C:/Users/Lenovo v15/AppData/Local/Android/Sdk` |
-| Componentes | Platform android-36 (app) y android-34 (printing), Build-Tools 36.0.0, Platform-Tools 37.0.1, Command-line Tools 22.0, NDK 28.2.13676358 |
-| Licencias | `All SDK package licenses accepted`; doctor confirma todas aceptadas |
-| Java | PATH: Oracle Java 24.0.1; JDK en `C:/Program Files/Java/jdk-24`; JAVA_HOME no definido |
-| Java de Flutter | JBR de Android Studio, OpenJDK 25.0.3, seleccionado con `flutter config --jdk-dir` |
-| Dispositivos | Sin teléfono físico disponible, confirmado por el usuario; emulador Android disponible por ADB |
-| Emuladores | `INCUPO_API_36`, Android 16/API 36 AOSP x86_64, Android Emulator 37.1.11, aceleración WHPX |
-| Pruebas | 71 originales aprobadas y 5 pruebas de integración Android aprobadas |
-| `flutter analyze` | Sin observaciones (`No issues found!`) |
-| Compilación debug | Correcta: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.028 bytes (~150 MiB) |
-| Firma | APK debug verificada con apksigner (v2, Android Debug). Firma release pendiente de contraseña local y creación de clave |
-| Release / ruta real / tamaño | No generada; no hay artefacto ni tamaño que informar |
-| Instalación / smoke test | Debug instalada en emulador y abierta también mediante launcher sin Flutter conectado. Release pendiente |
-| PDF nativo y offline | Generación y renderizado de todas las páginas aprobados en emulador sin Wi-Fi/datos (pan, vacío, sin equilibrio y 90 ítems). Teléfono físico pendiente |
+| Flutter / Dart | 3.47.5 stable / 3.13.4; `.local/flutter` |
+| Doctor | Android toolchain correcto y todas las licencias aceptadas |
+| Aviso restante | Flutter/Dart fuera del PATH; se utiliza `tools/flutter.cmd` |
+| Android Studio | 2026.1.4, instalado en `C:/Program Files/Android/Android Studio` |
+| SDK | `C:/Android/Sdk`, enlace al SDK físico del perfil: `C:/Users/Lenovo v15/AppData/Local/Android/Sdk` |
+| Plataformas | API 36 para la app; API 34 requerida por printing |
+| Herramientas | Build-Tools 36.0.0, Platform-Tools 37.0.1, Command-line Tools 22.0, NDK 28.2.13676358 |
+| Java de Flutter | OpenJDK 25.0.3 incluido con Android Studio, configurado mediante `flutter config --jdk-dir` |
+| Emulador | `INCUPO_API_36`, Android 16/API 36 AOSP x86_64; Emulator 37.1.11; WHPX |
+| Configuración de prueba | 2 núcleos, 2048 MB de RAM, gráficos software, ejecución sin ventana |
 
-El nombre Android existente **INCUPO Costos** se conserva en `android/app/src/main/AndroidManifest.xml`.
-También se verificó con `aapt dump badging` sobre la APK debug, junto con el applicationId,
-minSdk 24, targetSdk 36 y versión actual 0.1.0+1. La vista instalada sigue pendiente.
-El `applicationId`, namespace y paquete de MainActivity ya coinciden en
-`ar.org.incupo.incupo_costos`; no se cambian. No hay un logo oficial en los recursos:
-se conserva temporalmente el icono de la plantilla Flutter, reemplazable en las carpetas
-`android/app/src/main/res/mipmap-*`. Su apariencia instalada está pendiente.
+SDK, Java, licencias y emulador ya están instalados. **No reinstalarlos** para continuar en esta PC.
+Se utiliza el enlace sin espacios `C:/Android/Sdk` para evitar el aviso NDK de Flutter.
+La ventana interactiva del emulador produjo un fallo de composición gráfica de Windows;
+las verificaciones Android se realizaron correctamente en modo sin ventana con ADB.
+Esto no es un fallo de INCUPO Costos ni afecta al APK instalado.
 
-El manifest principal no declara permisos de internet ni almacenamiento. Debug y
-profile conservan INTERNET para las herramientas Flutter. Se ejecutó correctamente
-`:app:processReleaseMainManifest` y se revisó el manifest fusionado de release:
-solo incluye el permiso interno de firma `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`
-de AndroidX; no solicita internet, almacenamiento general, ubicación, cámara ni contactos.
-No se agregaron permisos. El motor y las fuentes del PDF son locales; el funcionamiento
-sin Wi-Fi/datos se comprobó en emulador, con prueba física pendiente.
-No se modificaron la lógica matemática, los tests existentes ni el Excel.
-SHA-256 verificado: `1f06ff91b8b4803d751a500dae819183eaaf022937de40dfe59b108ae0db3001`.
+## Verificaciones previas
 
-## Configuración utilizada en esta máquina
+- Git comenzó limpio en `main`, sincronizado con `origin/main`.
+- `flutter doctor -v`: Android toolchain correcto.
+- `flutter test`: **71 pruebas originales aprobadas**.
+- `flutter test integration_test/android_test.dart -d emulator-5554`: **5 pruebas aprobadas**.
+- Total: **76 pruebas aprobadas**, sin eliminar ni debilitar pruebas.
+- `flutter analyze`: **No issues found!**.
+- `:app:validateSigningRelease`: **BUILD SUCCESSFUL**.
+- No se repitió la auditoría del Excel ni se cambiaron componentes validados.
 
-No se reinstaló Android Studio. Al comenzar, el SDK no existía en la carpeta habitual.
-Se descargaron las Command-line Tools oficiales, archivo `commandlinetools-win-15859902_latest.zip`,
-con SHA-256 verificado `90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a`.
-Se instalaron con `sdkmanager` únicamente los componentes de compilación indicados en la tabla.
-La extracción inicial de PowerShell falló por longitud de rutas; se resolvió extrayendo
-directamente en el SDK. Los archivos de descarga y logs están en `.local/android-setup/`, fuera de Git.
+Las cinco pruebas de integración ejecutan los cuatro recorridos existentes y el canal
+nativo real de rasterización de PDF: pan, listas vacías, equilibrio no disponible y 90 costos.
+Las 71 originales se ejecutan con `flutter test`; las cinco de Android se ejecutan por separado.
 
-Doctor rechazó la ruta SDK con espacios por incompatibilidad con herramientas NDK.
-Se creó un enlace de directorio (junction) `C:/Android/Sdk` al SDK físico, sin moverlo ni duplicarlo.
-Se aplicó:
+## Firma y secretos
+
+La clave fue creada por el usuario localmente con `tools/configurar_firma.ps1`.
+Gradle localiza el keystore y utiliza la configuración release de `android/key.properties`.
+La APK fue firmada correctamente; su certificado no es Android Debug.
+No se imprimieron contraseñas ni se agregaron secretos al código, documentación o commits.
+
+Archivos necesarios para volver a firmar (no versionados):
+
+- `%LOCALAPPDATA%/INCUPO/signing/incupo-release.jks`.
+- `android/key.properties`, con referencia al keystore y credenciales locales.
+- Contraseña conservada por el responsable de la firma.
+
+**Respaldar y reutilizar la misma clave en futuras actualizaciones.** No crear otra firma
+para actualizar instalaciones existentes. Para configurar otro equipo, restaurar la clave
+privadamente y completar `android/key.properties` a partir de su plantilla, sin compartir
+credenciales por chat ni Git. El script de creación inicial no sobrescribe una clave existente.
+
+Se verificó `.gitignore`: excluye `key.properties`, `*.jks`, `*.keystore`, APK, AAB,
+configuración local, SDK y archivos de prueba. Ninguno de esos archivos está versionado.
+
+## APK release real
+
+`flutter build apk --release` terminó correctamente (assembleRelease, 122,7 s).
+No hubo errores; aparecieron avisos de herramientas Java y source/target Java 8 de dependencias.
+No se cambiaron dependencias para silenciar esos avisos.
+
+| Propiedad | Valor verificado |
+|---|---|
+| Archivo | `app-release.apk` |
+| Ruta relativa | `build/app/outputs/flutter-apk/app-release.apk` |
+| Ruta absoluta | `C:/Users/Lenovo v15/OneDrive/Escritorio/Practicas profesionalizantes 2/incupoAPK/build/app/outputs/flutter-apk/app-release.apk` |
+| Tamaño | 55.919.121 bytes, aproximadamente 53,3 MiB |
+| Versión | 1.0.0, versionCode 1 |
+| Nombre | INCUPO Costos |
+| applicationId | `ar.org.incupo.incupo_costos` |
+| Android mínimo / objetivo | API 24 / API 36 |
+| Arquitecturas | armeabi-v7a, arm64-v8a, x86_64 |
+| Firma | `apksigner verify --verbose`: Verifies; esquema v2 válido, un firmante |
+| SHA-256 | `bdcb0239da669f81281dce82f0b35714dabb4307e8ac1afa1a4672370a13174b` |
+
+Se verificaron las fuentes Lato Regular y Bold dentro de la APK.
+`aapt dump permissions` muestra únicamente el permiso interno de firma AndroidX
+`ar.org.incupo.incupo_costos.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+No hay permisos de internet, almacenamiento general, cámara, contactos ni ubicación.
+
+## Instalación y smoke test de release
+
+Se instaló exactamente `app-release.apk` con ADB (`Success`) y se abrió mediante la
+actividad del launcher, sin `flutter run`. Android informa versionName 1.0.0 y no incluye
+la bandera DEBUGGABLE. La app debug de integración ya no estaba instalada al iniciar
+esta validación; se confirmó su ausencia antes de instalar release.
+
+Wi-Fi y datos se desactivaron únicamente en el emulador. **Smoke test aprobado sobre
+la APK release instalada**, no sobre la app debug ni un ejecutor de integración:
+
+- Apertura independiente mediante launcher, nombre e identificador correctos.
+- Producto Pan, 1560 kg/mes, ocho costos variables y cinco fijos del fixture existente.
+- Amortización manual adicional: cantidad 1 e importe mensual 25.000.
+- Ganancia 4 %: precio sugerido **$ 2.370,34**, verificado en pantalla.
+- Volver atrás, conservar datos y cambiar ganancia a 5 %: recálculo **$ 2.393,13**.
+- PDF generado offline, vista previa renderizada y selector Android de compartir abierto
+  con el archivo correcto. No se envió a un destinatario externo.
+- Guardado mediante impresión nativa **Save as PDF**: archivo real
+  `/sdcard/Download/incupo-release-1.0.pdf`, **23.691 bytes, dos páginas**.
+- Verificación independiente del PDF con pypdf y renderizado PyMuPDF: Lato Regular/Bold
+  embebidas, tildes y caracteres españoles, tablas completas, subtotales, precio,
+  ganancias, proyección mensual, equilibrio y aclaraciones. Ambas páginas revisadas
+  visualmente, sin cortes ni superposiciones.
+- PDF final: variables **$ 2.383.010,00**, fijos **$ 1.172.500,00**, total **$ 3.555.510,00**,
+  ventas **$ 3.733.285,50**, utilidad **$ 177.775,50**, equilibrio **1.354,61 kg**.
+- Nuevo cálculo con confirmación: nombre y producción vacíos; listas de variables y
+  fijos sin ítems y totales cero; porcentaje de ganancia vacío.
+
+No se redondearon entradas ni operaciones intermedias. No hubo fallos que requirieran
+correcciones en motor, controller, UI o PdfService. La impresión física y la recepción
+en aplicaciones de mensajería no se probaron por falta de esos recursos; el selector
+Android y el guardado local sí se verificaron.
+
+Evidencias locales (excluidas de Git): `.local/android-setup/final-*.log`,
+`release-smoke.log`, capturas y el PDF guardado desde la APK release.
+
+## Reproducir compilación y verificación
+
+Desde la raíz, con la firma local ya disponible:
 
 ```powershell
-.\tools\flutter.cmd config --android-sdk 'C:\Android\Sdk'
-.\tools\flutter.cmd config --jdk-dir 'C:\Program Files\Android\Android Studio\jbr'
-.\tools\flutter.cmd doctor --android-licenses
+.\tools\flutter.cmd pub get
 .\tools\flutter.cmd doctor -v
-.\tools\flutter.cmd devices
-.\tools\flutter.cmd emulators
+.\tools\flutter.cmd test
+.\tools\flutter.cmd analyze
+.\tools\flutter.cmd build apk --release
 ```
 
-La aceptación de licencias se completó con respuestas afirmativas según la autorización
-de esta etapa. Doctor muestra Android toolchain correcto. ADB no detecta teléfonos y no
-había emuladores configurados en esa revisión inicial. Posteriormente se preparó el emulador indicado arriba. No se modificaron el PATH global ni el Java de otras aplicaciones.
-
-## Pruebas sin teléfono físico
-
-El usuario indicó que no dispone de teléfono y autorizó avanzar con el resto.
-Se instalaron `emulator` y `system-images;android-36;default;x86_64` con sdkmanager,
-y se creó `INCUPO_API_36` con perfil Pixel 2. WHPX está disponible; el emulador se
-inició con 2 núcleos, 2048 MB de RAM y renderizado software. Los archivos del AVD
-quedan en el perfil del usuario, fuera de Git. La advertencia de avdmanager sobre
-`devices.xml` no impidió crear ni arrancar el dispositivo.
-
-Se agregó `integration_test` del propio SDK de Flutter como dependencia de desarrollo.
-`integration_test/android_test.dart` reutiliza los cuatro recorridos del asistente y
-agrega la generación y rasterización nativa Android de PDFs de pan, listas vacías,
-equilibrio no disponible y 90 costos. No simula el canal de printing ni cambia el motor.
+Pruebas Android con emulador iniciado:
 
 ```powershell
+.\tools\flutter.cmd devices
 .\tools\flutter.cmd test integration_test/android_test.dart -d emulator-5554
 ```
 
-Para comprobar uso offline, se desactivaron Wi-Fi y datos únicamente en el emulador
-con `adb shell svc wifi disable` y `adb shell svc data disable` (ambos valores 0).
-Las pruebas del emulador no sustituyen la validación pendiente en un teléfono físico.
+Usar el ID real que muestre devices. Las pruebas de integración instalan un ejecutor de
+pruebas debug; para validar distribución, reinstalar después la APK release.
+En esta máquina se limitó Gradle a 2 GB y dos workers mediante `GRADLE_OPTS` solo en los
+comandos de la sesión, sin modificar la configuración global ni la del proyecto.
 
-Resultado: **5 pruebas aprobadas** (31 segundos de ejecución tras compilar e instalar).
-Se conservan las **71 pruebas originales aprobadas**, y el análisis está limpio.
-Por memoria disponible se detuvieron daemons Gradle ociosos y se limitaron recursos
-solo para el comando de prueba (`GRADLE_OPTS`, heap 2 GB y 2 workers), sin modificar
-la configuración global. Los resultados quedaron en `.local/android-setup/integration.log`.
-
-Se ejecutó después `flutter run -d emulator-5554 --no-resident` para recompilar e
-instalar la aplicación normal (sin el ejecutor de pruebas). Se revisaron Inicio,
-formularios, Resultados y vista previa en el dispositivo virtual. Un cálculo manual
-sin gastos permitió verificar las aclaraciones y las acciones nativas de PDF:
-
-- Vista previa renderizada con Lato, tildes y formato argentino, sin conexión.
-- Compartir abrió el selector Android mostrando `incupo-costos-20260929.pdf`.
-  La imagen AOSP ofrece Bluetooth e impresión; no se envió a un destinatario ni se
-  validó recepción en mensajería, porque no hay una aplicación configurada.
-- Guardar o imprimir abrió el diálogo del sistema. **Save as PDF** creó el archivo
-  `/sdcard/Download/incupo-costos-20260929.pdf`, 17.945 bytes. Se copió como evidencia
-  a `.local/android-setup/saved-from-android.pdf` y se verificaron cabecera y EOF.
-- La impresión física no se probó: no hay impresora disponible.
-- Se volvió a abrir debug mediante el launcher Android, fuera de `flutter run`.
-
-Evidencia local excluida de Git: `pdf-preview.png`, `share.xml`, `print.xml`,
-`save.xml`, `saved-from-android.pdf` y logs en `.local/android-setup/`.
-No se encontraron fallos que justificaran modificar el motor o la interfaz.
-
-Para volver a abrir el emulador y repetir las pruebas:
+Para verificar o instalar el archivo generado:
 
 ```powershell
-.\tools\flutter.cmd emulators --launch INCUPO_API_36
-.\tools\flutter.cmd devices
-.\tools\flutter.cmd run -d emulator-5554
+& C:\Android\Sdk\build-tools\36.0.0\apksigner.bat verify --verbose build/app/outputs/flutter-apk/app-release.apk
+& C:\Android\Sdk\platform-tools\adb.exe -s emulator-5554 install -r build/app/outputs/flutter-apk/app-release.apk
 ```
 
-El ID puede variar si se abre más de un emulador; usar el mostrado por devices.
-Al terminar la revisión se cerró el emulador para liberar memoria; el AVD permanece configurado.
-Los requisitos para retomar (teléfono, firma y opcionales) están enumerados al final
-del README en **Qué se necesita para continuar**. SDK, Studio y licencias ya están listos.
+Si hay una app debug firmada con otra clave, exportar cualquier cálculo que se desee
+conservar y desinstalar esa app antes de instalar release. Las actualizaciones release
+conservan el mismo applicationId y deben usar la misma clave, con versionCode aumentado.
 
-`flutter build apk --debug` terminó correctamente. Gradle instaló además API 34,
-requerida por `printing-5.15.1/android/build.gradle`; la app conserva API 36.
-Hubo advertencias de acceso nativo de Java 25, XML del SDK y source/target Java 8 en
-dependencias, sin impedir el build. No se alteraron dependencias ni fórmulas para ocultarlas.
-La caché generada `android/.kotlin/` se agregó a `.gitignore`.
+## Próximos requisitos y pendientes no bloqueantes
 
-Ruta real de debug en esta máquina:
-`C:/Users/Lenovo v15/OneDrive/Escritorio/Practicas profesionalizantes 2/incupoAPK/build/app/outputs/flutter-apk/app-debug.apk`.
-Es una APK de desarrollo, no el artefacto de distribución.
+- **Validación física en teléfono real pendiente.** Android 7 o superior, cable de datos,
+  opciones de desarrollador, depuración USB y autorización RSA de esta computadora.
+  Instalar la APK, abrirla desde su icono y repetir cálculo, recálculo, PDF, compartir,
+  guardar, nuevo cálculo, teclado, scroll y uso sin conexión.
+- **Icono oficial pendiente de recurso gráfico institucional.** Se conserva el icono
+  temporal de Flutter; no se inventó una marca ni se bloqueó el release por ello.
+- Impresión física pendiente: requiere impresora y servicio Android disponibles.
+  Guardar como PDF no requiere impresora.
+- Para recibir el PDF en mensajería u otro servicio, usar una aplicación destinataria
+  instalada en el teléfono; el emulador AOSP permite verificar el selector del sistema.
 
-## Componentes para reproducir el entorno
-
-1. En esta máquina Android Studio ya está instalado. En otro equipo, usar [Android Studio](https://developer.android.com/studio) y completar su asistente inicial.
-2. Abrir **More Actions > SDK Manager** (o **Tools > SDK Manager**). Anotar la ruta real de **Android SDK Location**.
-3. Instalar Android SDK Platform **API 36**, usada por este Flutter local; en SDK Tools instalar Build-Tools, Platform-Tools y Command-line Tools. El proyecto pide NDK **28.2.13676358**; instalar esa versión desde Show Package Details si no está disponible. Seguir cualquier requisito adicional de la compilación sin cambiar versiones al azar.
-4. No es necesario instalar un emulador para usar un teléfono físico. El mínimo configurado por este Flutter es API 24 (Android 7).
-5. Ejecutar desde la raíz del proyecto:
-
-```powershell
-.\tools\flutter.cmd doctor -v
-```
-
-Solo si Flutter no detecta el SDK, configurar la ruta **real observada** (sustituir el ejemplo):
-
-```powershell
-.\tools\flutter.cmd config --android-sdk 'C:\ruta\real\Android\Sdk'
-.\tools\flutter.cmd doctor --android-licenses
-.\tools\flutter.cmd doctor -v
-```
-
-Acepte las licencias necesarias en el diálogo. Confirmar Android toolchain correcto y
-el JDK elegido por Flutter antes de compilar. No es necesario modificar Java globalmente
-ni reparar componentes web/Windows. Referencia: [configuración Android de Flutter](https://docs.flutter.dev/platform-integration/android/setup).
-
-## Conectar el teléfono y probar debug
-
-1. En Ajustes > Acerca del teléfono, tocar siete veces **Número de compilación** (la ubicación varía por fabricante).
-2. Abrir Opciones de desarrollador y activar **Depuración USB**.
-3. Conectar por un cable USB que permita datos, desbloquear el teléfono y autorizar la huella de la computadora.
-4. Ejecutar los siguientes comandos. Sustituir `ID_ANDROID` por el ID detectado:
-
-```powershell
-.\tools\flutter.cmd devices
-.\tools\flutter.cmd run -d ID_ANDROID
-```
-
-Si no aparece, comprobar cable, autorización y controlador USB del fabricante en Windows.
-Registrar modelo, Android, tamaño de pantalla y fecha. **No generar release hasta completar
-las pruebas debug físicas.**
-
-## Registro manual pendiente
-
-Marcar cada punto solo tras ejecutarlo en el teléfono; adjuntar resultados y problemas reales.
-
-- [ ] Abrir desde Inicio, iniciar cálculo, cargar producto, producción mensual y unidad.
-- [ ] Agregar varios variables, editar uno y eliminar otro; comprobar subtotales.
-- [ ] Agregar fijos y amortización manual (cantidad 1, importe mensual).
-- [ ] Cargar porcentaje, obtener resultados, volver atrás conservando datos, cambiar un costo y comprobar recálculo.
-- [ ] Reproducir el pan con las entradas de `test/fixtures/caso_pan.dart`: 1560 kg, ganancia 4 %, amortización 0. Comparar contra la tabla del README; nunca reingresar importes redondeados como resultados intermedios.
-- [ ] Generar PDF, abrir vista previa, compartir hacia una aplicación elegida, guardar desde **Guardar o imprimir > Guardar como PDF** y abrir el archivo guardado.
-- [ ] Comprobar disponibilidad de impresión. Registrar si no hay impresora para verificar salida física.
-- [ ] Verificar tildes, ñ, fuentes, importes y continuidad de tablas con muchos costos/descripciones largas.
-- [ ] Revisar Inicio, producto, listas largas, editor, teclado abierto, resultados, botones inferiores y vista previa: sin overflow, cortes, contenido tapado ni scroll defectuoso.
-- [ ] Desactivar Wi-Fi y datos móviles; realizar otro cálculo y generar/abrir su PDF.
-- [ ] Iniciar nuevo cálculo y confirmar que se limpian todos los datos.
-
-## Firma local de distribución
-
-Para crear una nueva clave ingresando la contraseña solamente en la terminal local:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1
-```
-
-El script solicita y confirma la contraseña sin mostrarla, crea la clave fuera del
-repositorio en `%LOCALAPPDATA%/INCUPO/signing/incupo-release.jks`, alias `incupo`,
-y escribe `android/key.properties` (ignorado por Git). No sobrescribe archivos existentes.
-Usa la contraseña elegida también para la entrada de la clave; no genera ni imprime contraseñas.
-La referencia del certificado es `CN=INCUPO Costos`. Los escapes Unicode de Properties
-conservan los caracteres especiales, **no cifran las credenciales**. Respaldar la clave
-y proteger el archivo de propiedades. El script tiene sintaxis verificada; su ejecución
-interactiva y la validación Gradle siguen pendientes hasta ingresar la contraseña.
-
-`android/app/build.gradle.kts` lee `android/key.properties`. Release utiliza una
-configuración propia y **ya no recurre a la clave debug**. Sin los datos de firma válidos,
-release no podrá firmarse; debug no necesita ese archivo. Gradle compiló debug con esta
-configuración; todavía falta validar las credenciales y la firma de release.
-
-Antes de crear una clave, reutilizar la de distribución si ya existe. Para una nueva,
-usar el `keytool` del JDK identificado por doctor, con un destino seguro **fuera del
-repositorio**. Ejemplo (sustituir ambas rutas):
-
-```powershell
-& 'C:\ruta\jdk\bin\keytool.exe' -genkeypair -v -keystore 'C:\ruta-segura\incupo-release.jks' -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias incupo
-Copy-Item android/key.properties.example android/key.properties
-```
-
-Ingresar contraseñas interactivamente y completar el archivo local con `storeFile`
-(ruta absoluta, usar `/` en Windows), `storePassword`, `keyAlias` y `keyPassword`.
-El ejemplo versionado no contiene contraseñas. Respaldar el keystore y sus credenciales
-en un lugar seguro: las futuras actualizaciones requieren la misma firma. No compartir
-esas credenciales en README, logs ni commits. Git excluye `key.properties`, `*.jks`,
-`*.keystore`, `*.apk`, `*.aab` y `build/`.
-Referencia: [firma Android en Flutter](https://docs.flutter.dev/deployment/android#sign-the-app).
-
-## Compilar e instalar después de validar debug
-
-```powershell
-.\tools\flutter.cmd test
-.\tools\flutter.cmd analyze
-.\tools\flutter.cmd build apk --debug
-# Solo con debug probado y firma configurada:
-.\tools\flutter.cmd build apk --release
-Get-Item build/app/outputs/flutter-apk/app-release.apk | Select-Object FullName, Length
-```
-
-La ruta **esperada, todavía no comprobada**, es `build/app/outputs/flutter-apk/app-release.apk`.
-Verificar la firma con `apksigner verify --verbose --print-certs` de Build-Tools sobre
-la APK y registrar tamaño y SHA-256. El proyecto conserva `0.1.0+1` hasta completar
-la validación: cambiar a `1.0.0+1` antes de construir la candidata final, y aumentar
-el código de versión para actualizaciones posteriores.
-
-Transferir la APK al teléfono, abrirla, permitir instalación desde esa fuente cuando
-Android lo solicite, instalar y abrir desde el icono. Alternativamente usar el `adb`
-de Platform-Tools: `adb -s ID_ANDROID install -r build/app/outputs/flutter-apk/app-release.apk`.
-Si existe una instalación debug con otra firma, Android puede rechazar la actualización;
-exportar el cálculo que se quiera conservar y desinstalar debug antes de instalar release.
-
-- [ ] Registrar nombre e icono en el menú Android y apertura fuera de `flutter run`.
-- [ ] Completar un cálculo release con formularios, costos, navegación y resultados.
-- [ ] Generar, previsualizar, guardar y compartir PDF en release.
-- [ ] Repetir cálculo y PDF sin conexión, y reiniciar el cálculo.
-- [ ] Registrar compilaciones, firma verificada, APK real, tamaño, instalación y smoke test.
-
-Hasta completar estos puntos no declarar cerrada la versión 1.0.
+Para instalar manualmente, transferir `app-release.apk` al teléfono, permitir instalación
+desde esa fuente cuando Android lo solicite, instalar y abrir INCUPO Costos desde el icono.
+No hace falta instalar SDK, Android Studio, Flutter ni Java en el teléfono.
