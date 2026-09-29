@@ -4,11 +4,20 @@ Calculadora de costos mensuales para emprendedores, basada en la planilla de INC
 
 ## Estado de esta entrega
 
+Preparación Android: entorno diagnosticado, identidad conservada y firma externa preparada. **Faltan Android Studio, SDK y pruebas en teléfono; no se generó una APK.** Ver el [registro y guía de cierre Android](docs/cierre_android.md).
+
 Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. No se generó una APK ni se probó en un teléfono.
 
 Entorno utilizado: Flutter **3.47.5**, Dart **3.13.4**, canal stable. Dependencias resueltas en `pubspec.lock`.
 
-## Preparar y ejecutar
+## Requisitos
+
+- Flutter; en esta máquina se usa el SDK local.
+- Dart incluido con Flutter.
+- Android Studio y Android SDK con Platform, Build-Tools, Platform-Tools y Command-line Tools.
+- Dispositivo Android o emulador; para cerrar esta etapa se requiere al menos un teléfono real.
+
+## Desarrollo
 
 Con Flutter instalado en el PATH:
 
@@ -181,14 +190,25 @@ El original `NUEVA PLANILLA DE COSTOS  PAN ultimo (1).xlsx` permanece en la raí
 
 Repositorio local inicializado en la rama `main`. `.gitignore` excluye SDK, cachés, builds, configuración local y claves. `pubspec.lock`, fuentes, documentación y Excel se conservan. No se creó ni publicó un repositorio remoto de GitHub: no se proporcionó un destino.
 
-## APK y próximas etapas
+## APK
 
-Cuando esté disponible el entorno Android:
+Después de configurar Android, probar debug en el teléfono y completar la firma local:
 
 ```sh
+flutter build apk --debug
 flutter build apk --release
 ```
 
-Salida esperada: `build/app/outputs/flutter-apk/app-release.apk`. También se puede usar `.\tools\flutter.cmd build apk --release` en Windows. El comando todavía no se validó aquí porque falta el Android SDK. La configuración generada utiliza temporalmente firma debug para release; antes de distribuir la versión final se debe configurar una clave de firma propia y conservarla fuera de Git. El icono sigue siendo el de la plantilla de Flutter.
+En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `android/key.properties`, excluido de Git; copiar `android/key.properties.example` y completar los datos de una clave propia, conservada fuera del repositorio. No se creó una clave ni se validó la compilación todavía. Release ya no utiliza la firma debug. Ver [firma y validación Android](docs/cierre_android.md).
 
-Siguiente etapa: instalar/configurar Android SDK y herramientas, aceptar sus licencias, comprobar `flutter doctor -v` y conectar un teléfono con depuración USB o un emulador. Ejecutar `flutter run` y revisar el recorrido, teclado, accesibilidad, vista previa y acciones de compartir/guardar/imprimir en el dispositivo. Después configurar identidad/icono y firma de distribución, y ejecutar `flutter build apk --release` para generar `app-release.apk`. No se instaló Android SDK en esta etapa. No agregar persistencia ni servicios externos.
+### Ubicación del APK
+
+Ruta esperada: `build/app/outputs/flutter-apk/app-release.apk`. **No hay APK generada ni ruta real o tamaño verificados**: faltan SDK, validación física y firma local. Nombre Android conservado: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`. Icono temporal: plantilla Flutter; no hay logo oficial suministrado.
+
+### Instalación
+
+Transferir la APK al teléfono, abrirla, permitir la instalación desde esa fuente cuando Android lo solicite, instalar y abrir desde el icono. Completar un cálculo y verificar PDF, compartir, guardar y uso offline en esa instalación release. La prueba con `flutter run` no reemplaza esta comprobación.
+
+## Funcionamiento offline
+
+El motor, la interfaz y la generación PDF usan recursos locales, incluidas las fuentes Lato. No hay base de datos, cuentas ni servidor. Compartir hacia aplicaciones online puede necesitar conexión en la aplicación elegida. La validación con Wi-Fi y datos móviles desactivados en un teléfono sigue pendiente.
