@@ -4,9 +4,9 @@ Calculadora de costos mensuales para emprendedores, basada en la planilla de INC
 
 ## Estado de esta entrega
 
-Preparación Android: entorno diagnosticado, identidad conservada y firma externa preparada. **Faltan Android Studio, SDK y pruebas en teléfono; no se generó una APK.** Ver el [registro y guía de cierre Android](docs/cierre_android.md).
+Preparación Android: Android Studio instalado, identidad conservada y firma externa preparada. **Android toolchain correcto y licencias aceptadas**. Flutter usa `C:/Android/Sdk`, enlace al SDK del perfil para evitar espacios en la ruta: API 36 para la app, API 34 requerida por printing, Build-Tools 36.0.0 y NDK `28.2.13676358`. **Las pruebas en Android y la APK release siguen pendientes.** Ver el [registro y guía de cierre Android](docs/cierre_android.md).
 
-Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. No se generó una APK ni se probó en un teléfono.
+Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. En la preparación Android posterior se generó la APK debug; todavía no se probó en un teléfono.
 
 Entorno utilizado: Flutter **3.47.5**, Dart **3.13.4**, canal stable. Dependencias resueltas en `pubspec.lock`.
 
@@ -40,7 +40,7 @@ En esta máquina se descargó el SDK en `.local/flutter`, excluido de Git. Para 
 
 El lanzador usa el SDK local cuando existe y, en otros equipos, el Flutter del PATH. Su caché de paquetes también queda dentro de `.local/`. Al clonar el repositorio en otro equipo hay que instalar Flutter; el SDK no se distribuye junto al código.
 
-La descarga inicial de herramientas y dependencias necesita internet. El motor no lo requiere al ejecutarse. Para Android faltan el Android SDK y un dispositivo/emulador: `flutter doctor -v` no detectó el SDK ni un teléfono Android. Consultar la [instalación oficial de Flutter](https://docs.flutter.dev/install/manual) y la [configuración oficial para Android](https://docs.flutter.dev/platform-integration/android/setup).
+La descarga inicial de herramientas y dependencias necesita internet. El motor no lo requiere al ejecutarse. Android SDK ya está configurado y `flutter doctor -v` muestra Android toolchain correcto. No hay un teléfono Android detectado ni un emulador configurado. Consultar la [configuración usada y conexión USB](docs/cierre_android.md).
 
 ## Pruebas y validación
 
@@ -199,11 +199,13 @@ flutter build apk --debug
 flutter build apk --release
 ```
 
-En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `android/key.properties`, excluido de Git; copiar `android/key.properties.example` y completar los datos de una clave propia, conservada fuera del repositorio. No se creó una clave ni se validó la compilación todavía. Release ya no utiliza la firma debug. Ver [firma y validación Android](docs/cierre_android.md).
+En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `android/key.properties`, excluido de Git. Para crear una clave propia con contraseña ingresada localmente, ejecutar `powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1`; para una clave existente, completar la plantilla `android/key.properties.example` en el archivo local. La clave queda fuera del repositorio. Su creación interactiva y la validación release siguen pendientes. Release ya no utiliza la firma debug. Ver [firma y validación Android](docs/cierre_android.md).
 
 ### Ubicación del APK
 
-Ruta esperada: `build/app/outputs/flutter-apk/app-release.apk`. **No hay APK generada ni ruta real o tamaño verificados**: faltan SDK, validación física y firma local. Nombre Android conservado: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`. Icono temporal: plantilla Flutter; no hay logo oficial suministrado.
+APK debug generada y verificada: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.066 bytes (~150 MiB). Es una compilación de desarrollo con firma Android Debug, no una release. Pruebas de esta revisión: **71 aprobadas**, análisis sin observaciones. Ruta absoluta y entorno en [cierre Android](docs/cierre_android.md).
+
+Ruta esperada: `build/app/outputs/flutter-apk/app-release.apk`. **No hay APK release generada ni ruta real o tamaño verificados**: faltan validación física y firma local. Nombre Android conservado: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`. Icono temporal: plantilla Flutter; no hay logo oficial suministrado.
 
 ### Instalación
 
