@@ -1,0 +1,6 @@
+# Copiar como android/key.properties (ignorado por Git) y completar localmente.
+# Usar ruta absoluta con / en Windows. No guardar contrasenas reales aqui.
+storeFile=C:/ruta-segura/incupo-release.jks
+storePassword=
+keyAlias=incupo
+keyPassword=

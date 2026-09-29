@@ -19,4 +19,5 @@ android/local.properties
 android/key.properties
 *.jks
 *.keystore
-
+*.apk
+*.aab
