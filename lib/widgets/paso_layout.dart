@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_theme.dart';
+import 'indicador_pasos.dart';
+
 class PasoLayout extends StatelessWidget {
   const PasoLayout({
     super.key,
@@ -17,6 +20,53 @@ class PasoLayout extends StatelessWidget {
   final VoidCallback? continuar;
   final String textoContinuar;
 
+  Widget _contenido() => Padding(
+    padding: const EdgeInsets.all(Espacios.pagina),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final child in children)
+          Padding(
+            padding: const EdgeInsets.only(bottom: Espacios.amplio),
+            child: child,
+          ),
+      ],
+    ),
+  );
+
+  Widget _acciones(BuildContext context) {
+    final atrasBoton = OutlinedButton(
+      onPressed: atras,
+      child: const Text('Atrás'),
+    );
+    final siguiente = continuar == null
+        ? null
+        : FilledButton(
+            onPressed: continuar,
+            child: Text(textoContinuar, textAlign: TextAlign.center),
+          );
+    final apilados =
+        MediaQuery.sizeOf(context).width < 362 &&
+        MediaQuery.textScalerOf(context).scale(16) > 20;
+    return Padding(
+      padding: const EdgeInsets.all(Espacios.medio),
+      child: apilados
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [?siguiente, const SizedBox(height: 8), atrasBoton],
+            )
+          : Row(
+              children: [
+                Expanded(child: atrasBoton),
+                if (siguiente != null) ...[
+                  const SizedBox(width: 12),
+                  Expanded(child: siguiente),
+                ],
+              ],
+            ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
@@ -24,64 +74,29 @@ class PasoLayout extends StatelessWidget {
       automaticallyImplyLeading: false,
     ),
     body: SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Paso $paso de 5 · $titulo',
-                  style: Theme.of(context).textTheme.titleMedium,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: Espacios.maxContenido),
+          // La estructura permanece estable al abrir el teclado: no se recrea
+          // el TextField enfocado. También se pueden desplazar los botones.
+          child: Column(
+            children: [
+              IndicadorPasos(paso: paso, titulo: titulo),
+              Expanded(
+                child: SingleChildScrollView(
+                  key: ValueKey('contenido-$paso'),
+                  primary: false,
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [_contenido(), _acciones(context)],
+                  ),
                 ),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(
-                  value: paso / 5,
-                  semanticsLabel: 'Paso $paso de 5',
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              key: ValueKey('contenido-$paso'),
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  for (final child in children)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: child,
-                    ),
-                ],
               ),
-            ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: atras,
-                    child: const Text('Atrás'),
-                  ),
-                ),
-                if (continuar != null) ...[
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: FilledButton(
-                      onPressed: continuar,
-                      child: Text(textoContinuar),
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     ),
   );

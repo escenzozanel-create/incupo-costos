@@ -72,6 +72,7 @@ class _EditorCostoState extends State<EditorCosto> {
         cantidad: leerNumero(_cantidad.text),
         precioUnitario: leerNumero(_precio.text),
       );
+      FocusScope.of(context).unfocus();
       Navigator.of(context).pop();
     } on ValidacionException catch (e) {
       setState(() => _error = e.mensaje);
@@ -95,7 +96,12 @@ class _EditorCostoState extends State<EditorCosto> {
             const SizedBox(height: 20),
             TextFormField(
               controller: _concepto,
-              decoration: const InputDecoration(labelText: 'Concepto'),
+              decoration: const InputDecoration(
+                labelText: 'Concepto',
+                hintText: 'Ej.: Harina o alquiler',
+              ),
+              textInputAction: TextInputAction.next,
+              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
               validator: obligatorio,
               textCapitalization: TextCapitalization.sentences,
               onChanged: (_) => setState(() => _error = null),
@@ -110,6 +116,8 @@ class _EditorCostoState extends State<EditorCosto> {
             CampoNumerico(
               label: 'Precio unitario',
               controller: _precio,
+              action: TextInputAction.done,
+              onSubmitted: _guardar,
               onChanged: (_) => setState(() => _error = null),
             ),
             const SizedBox(height: 24),

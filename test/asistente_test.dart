@@ -57,7 +57,7 @@ void main() {
       await tocar(tester, 'Ver resultados');
       expect(find.text('por metro'), findsOneWidget);
       expect(find.text('150,00 %'), findsOneWidget);
-      await tocar(tester, 'Volver a editar');
+      await tocar(tester, 'Editar datos');
       expect(find.widgetWithText(TextFormField, 'Tela'), findsOneWidget);
       expect(find.widgetWithText(TextFormField, '12,5'), findsOneWidget);
       expect(find.widgetWithText(TextFormField, 'metro'), findsOneWidget);

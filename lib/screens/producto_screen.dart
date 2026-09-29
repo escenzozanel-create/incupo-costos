@@ -37,7 +37,12 @@ class _ProductoScreenState extends State<ProductoScreen> {
           TextFormField(
             key: const ValueKey('producto'),
             initialValue: c.producto,
-            decoration: const InputDecoration(labelText: 'Nombre del producto'),
+            decoration: const InputDecoration(
+              labelText: 'Nombre del producto',
+              hintText: 'Ej.: Pan casero',
+            ),
+            textInputAction: TextInputAction.next,
+            onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
             validator: obligatorio,
             textCapitalization: TextCapitalization.sentences,
             onChanged: (v) => c.actualizarProducto(nombre: v),
@@ -65,6 +70,8 @@ class _ProductoScreenState extends State<ProductoScreen> {
               key: const ValueKey('otraUnidad'),
               initialValue: c.otraUnidad,
               decoration: const InputDecoration(labelText: 'Escribí la unidad'),
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
               validator: obligatorio,
               onChanged: (v) => c.actualizarProducto(otraUnidad: v),
             ),

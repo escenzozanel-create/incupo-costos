@@ -37,7 +37,7 @@ class _AsistenteScreenState extends State<AsistenteScreen> {
       builder: (ctx) => AlertDialog(
         title: const Text('¿Querés iniciar un nuevo cálculo?'),
         content: const Text(
-          'Los datos actuales se eliminarán de la aplicación.',
+          'Los datos actuales se eliminarán de la aplicación. Si querés conservarlos, podés guardar primero el PDF.',
         ),
         actions: [
           TextButton(

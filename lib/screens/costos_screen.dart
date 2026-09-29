@@ -90,9 +90,16 @@ class CostosScreen extends StatelessWidget {
             variable ? 'Agregar costo variable' : 'Agregar costo fijo',
           ),
         ),
-        Text(
-          'Total de costos $plural: ${dinero(controller.total(tipo))}',
-          style: Theme.of(context).textTheme.titleLarge,
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainerLow,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Text(
+            'Total de costos $plural: ${dinero(controller.total(tipo))}',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         ),
       ],
     );

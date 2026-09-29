@@ -41,12 +41,18 @@ class _GananciaScreenState extends State<GananciaScreen> {
       continuar: _calcular,
       textoContinuar: 'Ver resultados',
       children: [
+        Text(
+          '¿Cuánto querés ganar sobre tus costos?',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         const Text(
           'El porcentaje de ganancia se agrega sobre el costo del producto.',
         ),
         CampoNumerico(
           label: 'Porcentaje de ganancia esperado',
           suffix: '%',
+          action: TextInputAction.done,
+          onSubmitted: _calcular,
           initialValue: widget.controller.ganancia,
           onChanged: (v) {
             widget.controller.actualizarGanancia(v);
@@ -54,7 +60,7 @@ class _GananciaScreenState extends State<GananciaScreen> {
           },
         ),
         const Text(
-          'Por ejemplo, escribí 4 para agregar un 4 %. También podés ingresar 0 %.',
+          'Por ejemplo, si escribís 20, se agregará un 20 % sobre el costo del producto. También podés ingresar 0 %.',
         ),
         if (_error != null) Semantics(liveRegion: true, child: Text(_error!)),
       ],

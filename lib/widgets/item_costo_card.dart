@@ -27,10 +27,10 @@ class ItemCostoCard extends StatelessWidget {
           Text(
             '${numeroArgentino(item.cantidad)} × ${dinero(item.precioUnitario)}',
           ),
-          Text(
-            'Total: ${dinero(total)}',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+          const SizedBox(height: 12),
+          const Text('Total'),
+          Text(dinero(total), style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             children: [
