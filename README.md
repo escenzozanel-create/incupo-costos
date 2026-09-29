@@ -1,10 +1,10 @@
 # INCUPO Costos
 
-Calculadora de costos mensuales para emprendedores, basada en la planilla de INCUPO. El objetivo es una app Android en Flutter, offline, sin cuentas, servidor, base de datos ni historial persistente. El cálculo podrá conservarse mediante un PDF.
+Calculadora de costos mensuales para emprendedores, basada en la planilla de INCUPO. App Android en Flutter, offline, sin cuentas, servidor, base de datos ni historial persistente. El cálculo puede conservarse mediante un PDF.
 
 ## Estado de esta entrega
 
-Etapa 2: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Todavía no se implementó el PDF ni el diseño visual definitivo. No se generó una APK ni se probó en un teléfono.
+Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. No se generó una APK ni se probó en un teléfono.
 
 Entorno utilizado: Flutter **3.47.5**, Dart **3.13.4**, canal stable. Dependencias resueltas en `pubspec.lock`.
 
@@ -40,9 +40,9 @@ flutter test --coverage
 flutter analyze
 ```
 
-Las **47 pruebas originales** del motor se conservan sin modificaciones. Se agregaron **8 pruebas del controller, 3 de formato/entrada y 4 del recorrido de widgets**, para un total de **62 pruebas**. El caso de pan compara los 12 resultados relevantes del Excel con tolerancia absoluta de `1e-8`, usando los valores completos, sin redondearlos previamente.
+Las **47 pruebas originales** del motor se conservan sin modificaciones. La etapa 2 agregó **8 pruebas del controller, 3 de formato/entrada y 4 del recorrido de widgets** (62). La etapa 3 agrega **4 de generación PDF, 3 de integración/errores y 2 de disposición móvil**, para un total de **71 pruebas**. Solo se actualizó el texto del botón esperado por un recorrido a «Editar datos». El caso de pan compara los 12 resultados relevantes del Excel con tolerancia absoluta de `1e-8`, usando los valores completos, sin redondearlos previamente.
 
-Verificación final de la etapa: **62 pruebas aprobadas** y **`flutter analyze` sin observaciones**.
+Verificación final de la etapa: **71 pruebas aprobadas** y **`flutter analyze` sin observaciones**.
 
 Las pruebas del asistente usan un tamaño de teléfono de 390 × 844: carga de producto y gastos, resultados, navegación hacia atrás (también botón del sistema), cambio de costo y recálculo, cancelar/confirmar reinicio, validaciones visibles, edición y eliminación, listas vacías, unidad personalizada y porcentaje mayor a 100. Son pruebas de widgets, no una prueba física de Android.
 
@@ -91,7 +91,27 @@ Se exige nombre de producto y unidad no vacíos, producción finita mayor que ce
 
 `porcentajeATasa(4)` devuelve `0.04`; el motor ya recibe la fracción y no vuelve a dividir por 100. No se redondean operaciones intermedias. El helper `formatters.dart` presenta dinero, porcentajes y cantidades con formato argentino y dos decimales, sin modificar valores internos. Los resultados matemáticamente no disponibles incluyen `null` y un motivo legible, sin NaN/Infinity. Los datos inválidos o desbordamientos del cálculo principal producen `ValidacionException`, mostrada con un mensaje comprensible junto al formulario.
 
-Los campos numéricos aceptan coma o punto decimal **sin separador de miles**, indicado junto a cada campo. Así `1500,50` y `1500.50` representan lo mismo; `1.500` es decimal, no se interpreta silenciosamente como mil quinientos. El formato de salida sí agrupa miles. No se agregaron dependencias.
+Los campos numéricos aceptan coma o punto decimal **sin separador de miles**, indicado junto a cada campo. Así `1500,50` y `1500.50` representan lo mismo; `1.500` es decimal, no se interpreta silenciosamente como mil quinientos. El formato de salida sí agrupa miles.
+
+## PDF y diseño visual
+
+Dependencias nuevas: `pdf: ^3.13.1` y `printing: ^5.15.1`. La fuente Lato se incluye localmente con su licencia OFL en `assets/fonts`; la interfaz y el PDF no descargan fuentes durante el uso.
+
+`PdfService.generar` recibe `CalculoCostos`, `ResultadoCalculo` y una fecha. Presenta los resultados recibidos y los totales de ítem del modelo existente, usando los mismos formateadores argentinos. No llama al motor ni incorpora fórmulas de negocio. Incluye producto, producción, ganancia esperada, fecha, tablas completas de variables y fijos, subtotales, costos unitarios, precio sugerido, ventas, utilidad, ganancia estimada y equilibrio con su explicación. La amortización aparece solamente si fue cargada. Aclara el supuesto de vender toda la producción y conserva las explicaciones para resultados no disponibles.
+
+Desde Resultados, **Guardar o compartir PDF** toma una instantánea y la fecha actual, genera el documento y abre una vista previa. **Compartir** usa el selector del sistema; **Guardar o imprimir** abre la impresión nativa, donde Android ofrece «Guardar como PDF» según disponibilidad. No se implementa almacenamiento propio. Los errores muestran mensajes comprensibles y permiten reintentar sin perder el cálculo; los detalles quedan en el registro de desarrollo.
+
+El tema `AppTheme.claro` centraliza Material 3, verdes, fondo claro, tipografía, campos, tarjetas y botones grandes. Se reutilizan el formulario y editor de ambas categorías, los campos numéricos, tarjetas y disposición común de pasos. Resultados destaca el precio y agrupa costos, proyección y equilibrio. Se mejoraron foco, acciones del teclado y desplazamiento; hay pruebas a 390 × 844 y a 320 × 640 con texto ampliado y teclado abierto. La identidad es tipográfica, sin inventar un logo oficial.
+
+Las pruebas de PDF generan cuatro ejemplos locales: pan, listas vacías, equilibrio no disponible y 90 ítems con descripciones largas. Para verificar texto con dos lectores independientes y renderizar todas las páginas:
+
+```sh
+flutter test test/pdf_service_test.dart
+python -m pip install pypdf pymupdf
+python tools/verificar_pdf.py
+```
+
+La evidencia queda en `.local/pdf-qa/`, excluida de Git. Se revisaron importes, explicaciones, paginación y límites de texto, además del aspecto de las páginas renderizadas. Las capturas de interfaz se pueden regenerar con `flutter test test/accesibilidad_layout_test.dart --dart-define=CAPTURAR_UI=true`; quedan en `.local/ui-qa/`. Las pruebas nativas usan un canal simulado: compartir, guardar, imprimir y previsualizar requieren una comprobación real en Android.
 
 ## Estado, navegación y gastos
 
@@ -106,13 +126,15 @@ El asistente administra cinco pasos y un inicio. `PopScope` devuelve al paso ant
 ```text
 android/                         Base nativa generada por Flutter
 lib/
-  main.dart                      Tema y entrada al asistente
+  main.dart                      Entrada al asistente
+  theme/app_theme.dart           Tema Material 3 y espaciados
   models/
     item_costo.dart               Ítem inmutable, total derivado
     calculo_costos.dart           Producto mensual y listas inmutables
     resultado_calculo.dart       Resultados y motivos de no disponibilidad
   services/
     calculadora_service.dart     Matemática independiente de Flutter UI
+    pdf_service.dart             Documento a partir de datos ya calculados
   utils/
     validators.dart              Validaciones y mensajes
     porcentajes.dart             Conversión entre porcentaje y fracción
@@ -125,8 +147,11 @@ lib/
     costos_screen.dart           Compartida por variables y fijos
     ganancia_screen.dart
     resultado_screen.dart
+    pdf_screen.dart              Vista previa y acciones nativas
   widgets/
     paso_layout.dart             Progreso, contenido desplazable y botones
+    indicador_pasos.dart          Paso actual y barra de progreso
+    exportar_pdf_button.dart      Generación, carga y errores
     campo_numerico.dart
     item_costo_card.dart
     editor_costo.dart
@@ -135,6 +160,9 @@ test/
   calculo_controller_test.dart    Estado, CRUD, recálculo y limpieza
   formatters_test.dart            Formato y parseo de entradas
   asistente_test.dart             Recorridos funcionales en tamaño móvil
+  pdf_service_test.dart           Cuatro documentos de prueba
+  pdf_interaccion_test.dart       Canal nativo y errores recuperables
+  accesibilidad_layout_test.dart Pantallas pequeñas, texto y teclado
   fixtures/caso_pan.dart          Datos del Excel
 docs/
   analisis_excel.md               Análisis y decisión actualizada
@@ -143,6 +171,8 @@ docs/
 tools/
   analizar_excel.py              Auditoría de solo lectura del XLSX
   flutter.cmd                    Lanzador para Windows
+  verificar_pdf.py                Verificación de contenido y render PDF
+assets/fonts/                    Lato local, procedencia y licencia OFL
 ```
 
 El original `NUEVA PLANILLA DE COSTOS  PAN ultimo (1).xlsx` permanece en la raíz, intacto y versionado. El análisis detallado está en [docs/analisis_excel.md](docs/analisis_excel.md).
@@ -161,4 +191,4 @@ flutter build apk --release
 
 Salida esperada: `build/app/outputs/flutter-apk/app-release.apk`. También se puede usar `.\tools\flutter.cmd build apk --release` en Windows. El comando todavía no se validó aquí porque falta el Android SDK. La configuración generada utiliza temporalmente firma debug para release; antes de distribuir la versión final se debe configurar una clave de firma propia y conservarla fuera de Git. El icono sigue siendo el de la plantilla de Flutter.
 
-Siguiente etapa: PDF offline a partir de `controller.calculo` y `controller.resultado`, sin recalcular reglas; después pulido visual, revisión de accesibilidad en dispositivo, icono y APK. Para probar físicamente faltan instalar/configurar Android SDK y herramientas, aceptar sus licencias y conectar un teléfono con depuración USB o un emulador. No se instaló Android SDK en esta etapa. No agregar persistencia ni servicios externos.
+Siguiente etapa: instalar/configurar Android SDK y herramientas, aceptar sus licencias, comprobar `flutter doctor -v` y conectar un teléfono con depuración USB o un emulador. Ejecutar `flutter run` y revisar el recorrido, teclado, accesibilidad, vista previa y acciones de compartir/guardar/imprimir en el dispositivo. Después configurar identidad/icono y firma de distribución, y ejecutar `flutter build apk --release` para generar `app-release.apk`. No se instaló Android SDK en esta etapa. No agregar persistencia ni servicios externos.
