@@ -15,15 +15,15 @@ Android Studio está instalado en `C:/Program Files/Android/Android Studio` (202
 | Licencias | `All SDK package licenses accepted`; doctor confirma todas aceptadas |
 | Java | PATH: Oracle Java 24.0.1; JDK en `C:/Program Files/Java/jdk-24`; JAVA_HOME no definido |
 | Java de Flutter | JBR de Android Studio, OpenJDK 25.0.3, seleccionado con `flutter config --jdk-dir` |
-| Dispositivos | `flutter devices`: Windows, Chrome y Edge; ningún Android detectado |
-| Emuladores | `flutter emulators`: sin fuentes de emuladores |
-| Pruebas | 71 aprobadas en esta revisión |
+| Dispositivos | Sin teléfono físico disponible, confirmado por el usuario; emulador Android disponible por ADB |
+| Emuladores | `INCUPO_API_36`, Android 16/API 36 AOSP x86_64, Android Emulator 37.1.11, aceleración WHPX |
+| Pruebas | 71 originales aprobadas y 5 pruebas de integración Android aprobadas |
 | `flutter analyze` | Sin observaciones (`No issues found!`) |
-| Compilación debug | Correcta: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.066 bytes (~150 MiB) |
+| Compilación debug | Correcta: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.028 bytes (~150 MiB) |
 | Firma | APK debug verificada con apksigner (v2, Android Debug). Firma release pendiente de contraseña local y creación de clave |
 | Release / ruta real / tamaño | No generada; no hay artefacto ni tamaño que informar |
-| Instalación / smoke test | Pendientes |
-| Dispositivo real, PDF nativo, pantalla y offline | No probados; no se atribuyen resultados físicos a tests de widgets |
+| Instalación / smoke test | Debug instalada en emulador y abierta también mediante launcher sin Flutter conectado. Release pendiente |
+| PDF nativo y offline | Generación y renderizado de todas las páginas aprobados en emulador sin Wi-Fi/datos (pan, vacío, sin equilibrio y 90 ítems). Teléfono físico pendiente |
 
 El nombre Android existente **INCUPO Costos** se conserva en `android/app/src/main/AndroidManifest.xml`.
 También se verificó con `aapt dump badging` sobre la APK debug, junto con el applicationId,
@@ -34,9 +34,12 @@ se conserva temporalmente el icono de la plantilla Flutter, reemplazable en las 
 `android/app/src/main/res/mipmap-*`. Su apariencia instalada está pendiente.
 
 El manifest principal no declara permisos de internet ni almacenamiento. Debug y
-profile conservan INTERNET para las herramientas Flutter. Al compilar, revisar también
-el manifest fusionado de release (incluye dependencias). No se agregaron permisos.
-El motor y las fuentes del PDF son locales; la comprobación en modo avión sigue pendiente.
+profile conservan INTERNET para las herramientas Flutter. Se ejecutó correctamente
+`:app:processReleaseMainManifest` y se revisó el manifest fusionado de release:
+solo incluye el permiso interno de firma `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`
+de AndroidX; no solicita internet, almacenamiento general, ubicación, cámara ni contactos.
+No se agregaron permisos. El motor y las fuentes del PDF son locales; el funcionamiento
+sin Wi-Fi/datos se comprobó en emulador, con prueba física pendiente.
 No se modificaron la lógica matemática, los tests existentes ni el Excel.
 SHA-256 verificado: `1f06ff91b8b4803d751a500dae819183eaaf022937de40dfe59b108ae0db3001`.
 
@@ -64,7 +67,67 @@ Se aplicó:
 
 La aceptación de licencias se completó con respuestas afirmativas según la autorización
 de esta etapa. Doctor muestra Android toolchain correcto. ADB no detecta teléfonos y no
-hay emuladores configurados. No se modificaron el PATH global ni el Java de otras aplicaciones.
+había emuladores configurados en esa revisión inicial. Posteriormente se preparó el emulador indicado arriba. No se modificaron el PATH global ni el Java de otras aplicaciones.
+
+## Pruebas sin teléfono físico
+
+El usuario indicó que no dispone de teléfono y autorizó avanzar con el resto.
+Se instalaron `emulator` y `system-images;android-36;default;x86_64` con sdkmanager,
+y se creó `INCUPO_API_36` con perfil Pixel 2. WHPX está disponible; el emulador se
+inició con 2 núcleos, 2048 MB de RAM y renderizado software. Los archivos del AVD
+quedan en el perfil del usuario, fuera de Git. La advertencia de avdmanager sobre
+`devices.xml` no impidió crear ni arrancar el dispositivo.
+
+Se agregó `integration_test` del propio SDK de Flutter como dependencia de desarrollo.
+`integration_test/android_test.dart` reutiliza los cuatro recorridos del asistente y
+agrega la generación y rasterización nativa Android de PDFs de pan, listas vacías,
+equilibrio no disponible y 90 costos. No simula el canal de printing ni cambia el motor.
+
+```powershell
+.\tools\flutter.cmd test integration_test/android_test.dart -d emulator-5554
+```
+
+Para comprobar uso offline, se desactivaron Wi-Fi y datos únicamente en el emulador
+con `adb shell svc wifi disable` y `adb shell svc data disable` (ambos valores 0).
+Las pruebas del emulador no sustituyen la validación pendiente en un teléfono físico.
+
+Resultado: **5 pruebas aprobadas** (31 segundos de ejecución tras compilar e instalar).
+Se conservan las **71 pruebas originales aprobadas**, y el análisis está limpio.
+Por memoria disponible se detuvieron daemons Gradle ociosos y se limitaron recursos
+solo para el comando de prueba (`GRADLE_OPTS`, heap 2 GB y 2 workers), sin modificar
+la configuración global. Los resultados quedaron en `.local/android-setup/integration.log`.
+
+Se ejecutó después `flutter run -d emulator-5554 --no-resident` para recompilar e
+instalar la aplicación normal (sin el ejecutor de pruebas). Se revisaron Inicio,
+formularios, Resultados y vista previa en el dispositivo virtual. Un cálculo manual
+sin gastos permitió verificar las aclaraciones y las acciones nativas de PDF:
+
+- Vista previa renderizada con Lato, tildes y formato argentino, sin conexión.
+- Compartir abrió el selector Android mostrando `incupo-costos-20260929.pdf`.
+  La imagen AOSP ofrece Bluetooth e impresión; no se envió a un destinatario ni se
+  validó recepción en mensajería, porque no hay una aplicación configurada.
+- Guardar o imprimir abrió el diálogo del sistema. **Save as PDF** creó el archivo
+  `/sdcard/Download/incupo-costos-20260929.pdf`, 17.945 bytes. Se copió como evidencia
+  a `.local/android-setup/saved-from-android.pdf` y se verificaron cabecera y EOF.
+- La impresión física no se probó: no hay impresora disponible.
+- Se volvió a abrir debug mediante el launcher Android, fuera de `flutter run`.
+
+Evidencia local excluida de Git: `pdf-preview.png`, `share.xml`, `print.xml`,
+`save.xml`, `saved-from-android.pdf` y logs en `.local/android-setup/`.
+No se encontraron fallos que justificaran modificar el motor o la interfaz.
+
+Para volver a abrir el emulador y repetir las pruebas:
+
+```powershell
+.\tools\flutter.cmd emulators --launch INCUPO_API_36
+.\tools\flutter.cmd devices
+.\tools\flutter.cmd run -d emulator-5554
+```
+
+El ID puede variar si se abre más de un emulador; usar el mostrado por devices.
+Al terminar la revisión se cerró el emulador para liberar memoria; el AVD permanece configurado.
+Los requisitos para retomar (teléfono, firma y opcionales) están enumerados al final
+del README en **Qué se necesita para continuar**. SDK, Studio y licencias ya están listos.
 
 `flutter build apk --debug` terminó correctamente. Gradle instaló además API 34,
 requerida por `printing-5.15.1/android/build.gradle`; la app conserva API 36.

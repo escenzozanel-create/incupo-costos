@@ -4,7 +4,7 @@ Calculadora de costos mensuales para emprendedores, basada en la planilla de INC
 
 ## Estado de esta entrega
 
-Preparación Android: Android Studio instalado, identidad conservada y firma externa preparada. **Android toolchain correcto y licencias aceptadas**. Flutter usa `C:/Android/Sdk`, enlace al SDK del perfil para evitar espacios en la ruta: API 36 para la app, API 34 requerida por printing, Build-Tools 36.0.0 y NDK `28.2.13676358`. **Las pruebas en Android y la APK release siguen pendientes.** Ver el [registro y guía de cierre Android](docs/cierre_android.md).
+Preparación Android: Android Studio instalado, identidad conservada y firma externa preparada. **Android toolchain correcto y licencias aceptadas**. Flutter usa `C:/Android/Sdk`, enlace al SDK del perfil para evitar espacios en la ruta: API 36 para la app, API 34 requerida por printing, Build-Tools 36.0.0 y NDK `28.2.13676358`. **App debug probada en emulador Android 16, incluido PDF offline y guardado nativo.** La firma release y las pruebas físicas siguen pendientes. Ver el [registro y guía de cierre Android](docs/cierre_android.md).
 
 Etapa 3: asistente funcional **Inicio → Producto → Costos variables → Costos fijos → Ganancia → Resultados → PDF**, sobre el motor matemático validado. Permite cargar, editar y eliminar gastos, volver atrás conservando el borrador, recalcular y comenzar otro cálculo con confirmación. La amortización es un costo fijo mensual manual. Incluye PDF, vista previa y acciones nativas para compartir o guardar/imprimir, además de un tema Material 3 centralizado. En la preparación Android posterior se generó la APK debug; todavía no se probó en un teléfono.
 
@@ -40,7 +40,7 @@ En esta máquina se descargó el SDK en `.local/flutter`, excluido de Git. Para 
 
 El lanzador usa el SDK local cuando existe y, en otros equipos, el Flutter del PATH. Su caché de paquetes también queda dentro de `.local/`. Al clonar el repositorio en otro equipo hay que instalar Flutter; el SDK no se distribuye junto al código.
 
-La descarga inicial de herramientas y dependencias necesita internet. El motor no lo requiere al ejecutarse. Android SDK ya está configurado y `flutter doctor -v` muestra Android toolchain correcto. No hay un teléfono Android detectado ni un emulador configurado. Consultar la [configuración usada y conexión USB](docs/cierre_android.md).
+La descarga inicial de herramientas y dependencias necesita internet. El motor no lo requiere al ejecutarse. Android SDK ya está configurado y `flutter doctor -v` muestra Android toolchain correcto. Está disponible el emulador `INCUPO_API_36`; no hay teléfono físico disponible. Consultar la [configuración usada y conexión USB](docs/cierre_android.md).
 
 ## Pruebas y validación
 
@@ -203,7 +203,7 @@ En esta máquina usar `.\tools\flutter.cmd` en lugar de `flutter`. Release lee `
 
 ### Ubicación del APK
 
-APK debug generada y verificada: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.066 bytes (~150 MiB). Es una compilación de desarrollo con firma Android Debug, no una release. Pruebas de esta revisión: **71 aprobadas**, análisis sin observaciones. Ruta absoluta y entorno en [cierre Android](docs/cierre_android.md).
+APK debug generada y verificada: `build/app/outputs/flutter-apk/app-debug.apk`, 157.324.028 bytes (~150 MiB). Es una compilación de desarrollo con firma Android Debug, no una release. Pruebas de esta revisión: **71 aprobadas**, análisis sin observaciones. Ruta absoluta y entorno en [cierre Android](docs/cierre_android.md).
 
 Ruta esperada: `build/app/outputs/flutter-apk/app-release.apk`. **No hay APK release generada ni ruta real o tamaño verificados**: faltan validación física y firma local. Nombre Android conservado: **INCUPO Costos**. Identificador: `ar.org.incupo.incupo_costos`. Icono temporal: plantilla Flutter; no hay logo oficial suministrado.
 
@@ -213,4 +213,29 @@ Transferir la APK al teléfono, abrirla, permitir la instalación desde esa fuen
 
 ## Funcionamiento offline
 
-El motor, la interfaz y la generación PDF usan recursos locales, incluidas las fuentes Lato. No hay base de datos, cuentas ni servidor. Compartir hacia aplicaciones online puede necesitar conexión en la aplicación elegida. La validación con Wi-Fi y datos móviles desactivados en un teléfono sigue pendiente.
+El motor, la interfaz y la generación PDF usan recursos locales, incluidas las fuentes Lato. No hay base de datos, cuentas ni servidor. Se comprobó cálculo, generación, vista previa y guardado PDF en el emulador con Wi-Fi y datos desactivados. Compartir hacia aplicaciones online puede necesitar conexión en la aplicación elegida. La validación en teléfono físico sigue pendiente.
+
+## Qué se necesita para continuar
+
+| Elemento | Estado y próxima acción |
+|---|---|
+| Android Studio, SDK, Java y licencias | Ya configurados. **No volver a instalarlos** en esta PC. Flutter usa `C:/Android/Sdk` y el JDK incluido con Android Studio. |
+| Emulador | `INCUPO_API_36` disponible; cinco pruebas de integración aprobadas con Wi-Fi y datos desactivados. |
+| Teléfono físico | Pendiente por disponibilidad. Android 7/API 24 o superior, cable USB de datos, opciones de desarrollador, depuración USB y autorización RSA de esta PC. No requiere cuenta para la app. |
+| Clave de firma release | Pendiente. Ejecutar el comando de abajo e ingresar una contraseña propia **solo en la terminal local**. Respaldar el keystore y la contraseña. |
+| APK release | Se podrá firmar cuando exista la clave. Después verificar firma e instalar; aún no hay artefacto release entregable. |
+| Validación final física | Completar cálculo, PDF, guardar/compartir, modo avión, teclado y pantallas; repetir smoke test con release instalada desde su icono. |
+| Impresión física | Solo para probar salida en papel: impresora/servicio Android disponible. Guardar como PDF no requiere impresora física. |
+| Icono oficial | Opcional; puede entregarse después. Se mantiene el temporal y no bloquea la compilación. |
+
+Crear la firma desde la raíz del proyecto:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\configurar_firma.ps1
+```
+
+Se crean `%LOCALAPPDATA%/INCUPO/signing/incupo-release.jks` y `android/key.properties`.
+No enviar esos archivos ni la contraseña al chat o a Git. Para retomar, indicar que
+la firma fue creada y, cuando sea posible, conectar el teléfono; ejecutar
+`.\tools\flutter.cmd devices` para comprobar su detección. Los detalles y resultados
+están en [docs/cierre_android.md](docs/cierre_android.md).
