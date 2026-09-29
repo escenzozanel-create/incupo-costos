@@ -14,6 +14,7 @@ coverage/
 __pycache__/
 *.pyc
 android/.gradle/
+android/.kotlin/
 android/captures/
 android/local.properties
 android/key.properties
