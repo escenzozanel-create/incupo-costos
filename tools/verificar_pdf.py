@@ -75,6 +75,13 @@ for name, snippets in expected.items():
         for i in range(1, 91):
             assert f'Insumo {i}:' in text
     for n, page in enumerate(doc, 1):
+        encabezados = page.search_for('Calculadora de Costos')
+        assert len(encabezados) == 1, (name, n, 'Debe aparecer un título')
+        centro_titulo = (encabezados[0].x0 + encabezados[0].x1) / 2
+        assert abs(centro_titulo - page.rect.width / 2) < 0.5, (name, n, 'Título descentrado')
+        creditos = [line for line in page.get_text().splitlines() if 'Desarrollado por' in line]
+        assert creditos == ['Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026'], (name, n, 'Créditos incorrectos')
+        assert 'Escuela Superior de Comercio' not in page.get_text(), (name, n, 'Nombre de escuela duplicado')
         assert f'Página {n} de {len(reader.pages)}' in ' '.join(page.get_text().split())
         assert len(page.get_image_info()) == 3, (name, n, 'Deben aparecer los tres logos institucionales')
     for i, page in enumerate(doc):

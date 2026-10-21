@@ -61,7 +61,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(LogoInstitucional), findsNWidgets(3));
     expect(find.byTooltip('Información institucional'), findsNothing);
-    expect(find.text('Escuela Superior de Comercio N°43'), findsOneWidget);
+    expect(find.text('Escuela Superior de Comercio N°43'), findsNothing);
     expect(tester.takeException(), isNull);
     final creditos = find.text(
       'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',

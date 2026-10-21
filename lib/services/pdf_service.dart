@@ -186,29 +186,47 @@ class PdfService {
         header: (context) => pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Row(
-              mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-              children: [
-                if (logo != null) ...[
-                  pw.Image(logo, width: 54, height: 22, fit: pw.BoxFit.contain),
-                  pw.SizedBox(width: 8),
+            pw.SizedBox(
+              width: double.infinity,
+              height: 32,
+              child: pw.Stack(
+                children: [
+                  pw.Positioned.fill(
+                    child: pw.Center(
+                      child: pw.Text(
+                        'Calculadora de Costos',
+                        style: pw.TextStyle(
+                          fontSize: 16,
+                          color: verde,
+                          fontWeight: pw.FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (logo != null)
+                    pw.Positioned(
+                      left: 0,
+                      top: 5,
+                      child: pw.Image(
+                        logo,
+                        width: 54,
+                        height: 22,
+                        fit: pw.BoxFit.contain,
+                      ),
+                    ),
+                  if (fundacion != null)
+                    pw.Positioned(
+                      right: 0,
+                      top: 0,
+                      child: pw.Image(
+                        fundacion,
+                        width: 40,
+                        height: 32,
+                        fit: pw.BoxFit.contain,
+                      ),
+                    ),
                 ],
-                pw.Text(
-                  'Calculadora de Costos',
-                  style: pw.TextStyle(
-                    fontSize: 16,
-                    color: verde,
-                    fontWeight: pw.FontWeight.bold,
-                  ),
-                ),
-                if (fundacion != null)
-                  pw.Image(
-                    fundacion,
-                    width: 40,
-                    height: 32,
-                    fit: pw.BoxFit.contain,
-                  ),
-              ],
+              ),
             ),
             pw.Align(
               alignment: pw.Alignment.centerRight,

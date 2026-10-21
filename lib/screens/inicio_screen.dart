@@ -68,12 +68,6 @@ class InicioScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Escuela Superior de Comercio N°43',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                const SizedBox(height: 8),
-                Text(
                   'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
