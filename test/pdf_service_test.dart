@@ -77,6 +77,8 @@ void main() {
       expect(estructura.trimRight().endsWith('%%EOF'), isTrue);
       expect(RegExp(r'/Type\s*/Catalog').hasMatch(estructura), isTrue);
       expect(RegExp(r'/Type\s*/Page\b').hasMatch(estructura), isTrue);
+      final paginas = RegExp(r'/Type\s*/Page\b').allMatches(estructura).length;
+      expect(paginas, entry.key == 'largo' ? greaterThan(1) : equals(1));
       expect(bytes.length, greaterThan(10000));
       final directorio = Directory('.local/pdf-qa')
         ..createSync(recursive: true);
