@@ -47,7 +47,7 @@ for name, snippets in expected.items():
     # también sin espacios para verificar el contenido con ambos lectores.
     compact = ''.join(''.join(page.extract_text().split()) for page in reader.pages)
     for snippet in ['Calculadora de Costos',
-                    'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
+                    'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',
                     'Precio sugerido', 'Costos variables', 'Costos fijos',
                     'Fecha de emisión: 28/09/2026',
                     '¿Cuánto necesitás vender para cubrir tus costos?', *explicaciones, *snippets]:
