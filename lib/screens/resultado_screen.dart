@@ -100,7 +100,7 @@ class ResultadoScreen extends StatelessWidget {
         }),
         _seccion(
           context,
-          'Proyección mensual',
+          'Ingresos mensuales',
           {
             'Ventas estimadas': dinero(r.ventasEstimadas),
             'Utilidad mensual estimada': dinero(r.utilidad),

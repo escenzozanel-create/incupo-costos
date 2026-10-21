@@ -33,9 +33,9 @@ class PdfService {
       logo = null;
     }
     final doc = pw.Document(
-      title: 'INCUPO Costos - ${calculo.producto}',
+      title: 'Calculadora de Costos - ${calculo.producto}',
       author: 'INCUPO',
-      creator: 'INCUPO Costos',
+      creator: 'Calculadora de Costos',
     );
     final verde = PdfColor.fromHex('#255B43');
     final claro = PdfColor.fromHex('#EDF3EC');
@@ -142,7 +142,7 @@ class PdfService {
                   pw.SizedBox(width: 12),
                 ],
                 pw.Text(
-                  'INCUPO Costos',
+                  'Calculadora de Costos',
                   style: pw.TextStyle(
                     fontSize: 18,
                     color: verde,
@@ -167,7 +167,7 @@ class PdfService {
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Text(
-                'Desarrollado por estudiantes de 3er año de la Escuela de Comercio – 2026',
+                'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
                 style: const pw.TextStyle(fontSize: 8),
               ),
               pw.SizedBox(height: 5),
@@ -261,6 +261,7 @@ class PdfService {
             'Precio sugerido',
             '${dinero(resultado.precioSugerido)} por $unidad',
           ),
+          titulo('Ingresos mensuales'),
           par('Ventas mensuales estimadas', dinero(resultado.ventasEstimadas)),
           par('Utilidad mensual estimada', dinero(resultado.utilidad)),
           if (resultado.gananciaEstimadaSobreCosto != null)

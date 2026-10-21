@@ -10,7 +10,7 @@ class InicioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text('INCUPO Costos'),
+      title: const Text('Calculadora de Costos'),
       actions: [
         IconButton(
           tooltip: 'Información institucional',
@@ -37,7 +37,7 @@ class InicioScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 28),
                 Text(
-                  'INCUPO Costos',
+                  'Calculadora de Costos',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),

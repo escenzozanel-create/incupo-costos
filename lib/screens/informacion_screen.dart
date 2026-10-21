@@ -25,11 +25,11 @@ class InformacionScreen extends StatelessWidget {
                 LogoInstitucional(
                   archivo: 'assets/images/escuela_comercio.png',
                   alternativo: 'assets/images/escuela_comercio.webp',
-                  nombre: 'Escuela de Comercio',
+                  nombre: 'Escuela Superior de Comercio N°43',
                 ),
                 SizedBox(height: 32),
                 Text(
-                  'Desarrollado por estudiantes de 3er año de la Escuela de Comercio – 2026',
+                  'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
                   textAlign: TextAlign.center,
                 ),
               ],

@@ -11,7 +11,7 @@ class IncupoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-    title: 'INCUPO Costos',
+    title: 'Calculadora de Costos',
     debugShowCheckedModeBanner: false,
     theme: AppTheme.claro,
     home: const AsistenteScreen(),

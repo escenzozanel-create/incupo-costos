@@ -96,9 +96,11 @@ class _EditorCostoState extends State<EditorCosto> {
             const SizedBox(height: 20),
             TextFormField(
               controller: _concepto,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Concepto',
-                hintText: 'Ej.: Harina o alquiler',
+                hintText: widget.tipo == TipoCosto.variable
+                    ? 'Ej.: Harina'
+                    : 'Ej.: Alquiler',
               ),
               textInputAction: TextInputAction.next,
               onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),

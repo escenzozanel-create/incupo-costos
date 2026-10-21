@@ -33,14 +33,17 @@ for name, snippets in expected.items():
     # pypdf omite algunos espacios posicionados de estas fuentes; comparar
     # también sin espacios para verificar el contenido con ambos lectores.
     compact = ''.join(''.join(page.extract_text().split()) for page in reader.pages)
-    for snippet in ['INCUPO Costos',
-                    'Desarrollado por estudiantes de 3er año de la Escuela de Comercio – 2026',
+    for snippet in ['Calculadora de Costos',
+                    'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
                     'Precio sugerido', 'Costos variables', 'Costos fijos',
                     'Punto de equilibrio', 'Las ventas y la utilidad estimadas', *snippets]:
         assert snippet in text, (name, 'Contenido ausente', snippet)
         assert ''.join(snippet.split()) in compact, (name, 'Contenido ausente en segundo lector', snippet)
     assert 'NaN' not in text and 'Infinity' not in text
     assert 'Ganancia estimada' not in text
+    assert 'INCUPO Costos' not in text
+    assert 'Proyección mensual' not in text
+    assert 'Ingresos mensuales' in text
     if name in ['pan', 'largo']:
         assert 'Ganancia proyectada sobre costos' in text
     if name in ['vacio', 'sin_equilibrio']:

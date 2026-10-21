@@ -70,7 +70,7 @@ class PasoLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text('INCUPO Costos'),
+      title: const Text('Calculadora de Costos'),
       automaticallyImplyLeading: false,
     ),
     body: SafeArea(
