@@ -26,13 +26,16 @@ expected = {
 }
 report = {}
 explicaciones = [
-    'Suma de los costos variables y fijos del mes.',
-    'Cuánto cuesta producir una unidad según la producción informada.',
-    'Porcentaje de ganancia previsto sobre el costo.',
-    'Precio orientativo para cubrir costos y alcanzar la ganancia proyectada.',
-    'Monto que ingresaría si se venden las unidades al precio sugerido.',
-    'Ganancia aproximada luego de descontar los costos, suponiendo que se vende toda la producción.',
-    'Cantidad mínima de unidades que deben venderse para cubrir los costos.',
+    '¿Cuánto te cuesta producir?',
+    'Costos del mes',
+    'Costo por unidad',
+    'Es el costo de producir',
+    'Este precio cubre tus costos e incluye el',
+    'Si vendés toda tu producción',
+    'Ingresarías',
+    'Utilidad mensual estimada',
+    'Estos valores son estimaciones y suponen que se vende toda la producción.',
+    'Otros datos del cálculo',
     'Los valores de ingresos y utilidad son estimaciones basadas en la producción y el precio informado. La aplicación no registra ventas reales.',
 ]
 for name, snippets in expected.items():
@@ -46,7 +49,8 @@ for name, snippets in expected.items():
     for snippet in ['Calculadora de Costos',
                     'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
                     'Precio sugerido', 'Costos variables', 'Costos fijos',
-                    'Punto de equilibrio', *explicaciones, *snippets]:
+                    'Fecha de emisión: 28/09/2026',
+                    '¿Cuánto necesitás vender para cubrir tus costos?', *explicaciones, *snippets]:
         assert snippet in text, (name, 'Contenido ausente', snippet)
         assert ''.join(snippet.split()) in compact, (name, 'Contenido ausente en segundo lector', snippet)
     assert 'NaN' not in text and 'Infinity' not in text
@@ -56,6 +60,12 @@ for name, snippets in expected.items():
     assert 'Ingresos mensuales' in text
     if name in ['pan', 'largo']:
         assert 'Ganancia proyectada' in text
+        assert 'A partir de esa cantidad cubrís los costos del mes.' in text
+    if name == 'pan':
+        assert 'Aproximadamente 1.390 kg' in text
+        assert '1.389,05 kg exactos' in text
+        assert 'Si vendés los 1.560,00 kg del mes al precio sugerido:' in text
+        assert 'incluye el 4,00 % de ganancia que elegiste.' in text
     if name in ['pan', 'vacio', 'sin_equilibrio']:
         assert len(reader.pages) == 1, (name, 'Debe entrar en una hoja A4')
     if name in ['vacio', 'sin_equilibrio']:
@@ -66,6 +76,7 @@ for name, snippets in expected.items():
             assert f'Insumo {i}:' in text
     for n, page in enumerate(doc, 1):
         assert f'Página {n} de {len(reader.pages)}' in ' '.join(page.get_text().split())
+        assert len(page.get_image_info()) == 3, (name, n, 'Deben aparecer los tres logos institucionales')
     for i, page in enumerate(doc):
         page.get_pixmap(matrix=pymupdf.Matrix(1.2, 1.2)).save(folder / f'{name}-{i+1}.png')
         # Detectar texto fuera de la página. La inspección visual complementa

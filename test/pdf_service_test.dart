@@ -78,11 +78,11 @@ void main() {
       expect(RegExp(r'/Type\s*/Catalog').hasMatch(estructura), isTrue);
       expect(RegExp(r'/Type\s*/Page\b').hasMatch(estructura), isTrue);
       final paginas = RegExp(r'/Type\s*/Page\b').allMatches(estructura).length;
-      expect(paginas, entry.key == 'largo' ? greaterThan(1) : equals(1));
       expect(bytes.length, greaterThan(10000));
       final directorio = Directory('.local/pdf-qa')
         ..createSync(recursive: true);
       await File('${directorio.path}/${entry.key}.pdf').writeAsBytes(bytes);
+      expect(paginas, entry.key == 'largo' ? greaterThan(1) : equals(1));
       // La extracción independiente de texto y revisión de páginas se realiza
       // con tools/verificar_pdf.py sobre estos mismos bytes, no otro generador.
     });

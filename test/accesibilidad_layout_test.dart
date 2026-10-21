@@ -10,6 +10,7 @@ import 'package:incupo_costos/screens/resultado_screen.dart';
 import 'package:incupo_costos/state/calculo_controller.dart';
 import 'package:incupo_costos/theme/app_theme.dart';
 import 'package:incupo_costos/widgets/editor_costo.dart';
+import 'package:incupo_costos/widgets/logo_institucional.dart';
 
 import 'fixtures/caso_pan.dart';
 
@@ -49,6 +50,26 @@ void main() {
     await tester.pumpWidget(
       RepaintBoundary(key: key, child: const IncupoApp()),
     );
+    await tester.runAsync(() async {
+      final context = tester.element(find.byType(Scaffold).first);
+      await Future.wait([
+        'assets/images/incupo_logo.png',
+        'assets/images/fundacion_incupo.png',
+        'assets/images/escuela_comercio.webp',
+      ].map((archivo) => precacheImage(AssetImage(archivo), context)));
+    });
+    await tester.pumpAndSettle();
+    expect(find.byType(LogoInstitucional), findsNWidgets(3));
+    expect(find.byTooltip('Información institucional'), findsNothing);
+    expect(find.text('Escuela Superior de Comercio N°43'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    final creditos = find.text(
+      'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
+    );
+    await tester.ensureVisible(creditos);
+    await tester.pumpAndSettle();
+    await captura(tester, key, 'inicio-institucional');
+    await tester.ensureVisible(find.byType(LogoInstitucional).first);
     await tester.pumpAndSettle();
     await captura(tester, key, 'inicio');
     final c = CalculoController();

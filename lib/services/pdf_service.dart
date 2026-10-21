@@ -23,15 +23,26 @@ class PdfService {
     final negrita = pw.Font.ttf(
       await rootBundle.load('assets/fonts/Lato-Bold.ttf'),
     );
-    pw.MemoryImage? logo;
-    try {
-      final datos = await rootBundle.load('assets/images/incupo_logo.png');
-      logo = pw.MemoryImage(
-        datos.buffer.asUint8List(datos.offsetInBytes, datos.lengthInBytes),
-      );
-    } catch (_) {
-      logo = null;
+    Future<pw.MemoryImage?> cargarLogo(List<String> rutas) async {
+      for (final ruta in rutas) {
+        try {
+          final datos = await rootBundle.load(ruta);
+          return pw.MemoryImage(
+            datos.buffer.asUint8List(datos.offsetInBytes, datos.lengthInBytes),
+          );
+        } catch (_) {
+          continue;
+        }
+      }
+      return null;
     }
+
+    final logo = await cargarLogo(['assets/images/incupo_logo.png']);
+    final fundacion = await cargarLogo(['assets/images/fundacion_incupo.png']);
+    final escuela = await cargarLogo([
+      'assets/images/escuela_comercio.png',
+      'assets/images/escuela_comercio.webp',
+    ]);
     final doc = pw.Document(
       title: 'Calculadora de Costos - ${calculo.producto}',
       author: 'INCUPO',
@@ -57,7 +68,7 @@ class PdfService {
     );
 
     pw.Widget par(String nombre, String valor) => pw.Padding(
-      padding: const pw.EdgeInsets.symmetric(vertical: 3),
+      padding: const pw.EdgeInsets.symmetric(vertical: 2),
       child: pw.Row(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
@@ -106,7 +117,7 @@ class PdfService {
           cellStyle: pw.TextStyle(font: normal, fontSize: 10),
           cellPadding: const pw.EdgeInsets.symmetric(
             horizontal: 6,
-            vertical: 3,
+            vertical: 2,
           ),
           columnWidths: {
             0: const pw.FlexColumnWidth(3.2),
@@ -125,10 +136,9 @@ class PdfService {
       par('Total ${nombre.toLowerCase()}', dinero(total)),
     ];
 
-    pw.Widget resultadoCelda(
+    pw.Widget bloque(
       String etiqueta,
-      String valor,
-      String explicacion, {
+      List<pw.Widget> contenido, {
       bool destacado = false,
     }) => pw.Container(
       padding: const pw.EdgeInsets.symmetric(horizontal: 8, vertical: 5),
@@ -140,20 +150,29 @@ class PdfService {
             etiqueta,
             style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
           ),
-          pw.SizedBox(height: 2),
-          pw.Text(
-            valor,
-            style: pw.TextStyle(
-              fontSize: 12,
-              fontWeight: pw.FontWeight.bold,
-              color: verde,
-            ),
-          ),
-          pw.SizedBox(height: 2),
-          pw.Text(explicacion, style: const pw.TextStyle(fontSize: 9)),
+          pw.SizedBox(height: 4),
+          ...contenido,
         ],
       ),
     );
+
+    pw.Widget nota(String texto) =>
+        pw.Text(texto, style: const pw.TextStyle(fontSize: 9));
+    pw.Widget valor(String texto, {double tamano = 12}) => pw.Text(
+      texto,
+      style: pw.TextStyle(
+        fontSize: tamano,
+        fontWeight: pw.FontWeight.bold,
+        color: verde,
+      ),
+    );
+    final produccion =
+        '${numeroArgentino(calculo.cantidadMensual)} $unidadCantidad';
+    final equilibrio = resultado.puntoEquilibrio;
+    final aproximado = equilibrio == null
+        ? null
+        : numeroArgentino(equilibrio.ceilToDouble())
+              .replaceFirst(RegExp(r',00$'), '');
 
     doc.addPage(
       pw.MultiPage(
@@ -182,8 +201,21 @@ class PdfService {
                     fontWeight: pw.FontWeight.bold,
                   ),
                 ),
-                pw.Text(fechaTexto, style: const pw.TextStyle(fontSize: 10)),
+                if (fundacion != null)
+                  pw.Image(
+                    fundacion,
+                    width: 40,
+                    height: 32,
+                    fit: pw.BoxFit.contain,
+                  ),
               ],
+            ),
+            pw.Align(
+              alignment: pw.Alignment.centerRight,
+              child: pw.Text(
+                'Fecha de emisión: $fechaTexto',
+                style: const pw.TextStyle(fontSize: 9),
+              ),
             ),
             pw.Divider(color: verde, height: 8),
           ],
@@ -193,9 +225,24 @@ class PdfService {
           child: pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
-              pw.Text(
-                'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
-                style: const pw.TextStyle(fontSize: 8),
+              pw.Row(
+                children: [
+                  if (escuela != null) ...[
+                    pw.Image(
+                      escuela,
+                      width: 26,
+                      height: 26,
+                      fit: pw.BoxFit.contain,
+                    ),
+                    pw.SizedBox(width: 6),
+                  ],
+                  pw.Expanded(
+                    child: pw.Text(
+                      'Desarrollado por estudiantes de 3er año de la Escuela Superior de Comercio N°43 – 2026',
+                      style: const pw.TextStyle(fontSize: 8),
+                    ),
+                  ),
+                ],
               ),
               pw.SizedBox(height: 3),
               pw.Row(
@@ -247,85 +294,77 @@ class PdfService {
             children: [
               pw.TableRow(
                 children: [
-                  resultadoCelda(
-                    'Costo total mensual',
-                    dinero(resultado.costoTotal),
-                    'Suma de los costos variables y fijos del mes.',
-                  ),
-                  resultadoCelda(
-                    'Costo por unidad',
-                    '${dinero(resultado.costoTotalUnitario)} por $unidad',
-                    'Cuánto cuesta producir una unidad según la producción informada.',
-                  ),
-                ],
-              ),
-              pw.TableRow(
-                children: [
-                  resultadoCelda(
-                    'Ganancia proyectada',
-                    resultado.gananciaEstimadaSobreCosto == null
-                        ? resultado.motivoGananciaNoDisponible!
-                        : porcentaje(resultado.gananciaEstimadaSobreCosto!),
-                    'Porcentaje de ganancia previsto sobre el costo.',
-                  ),
-                  resultadoCelda(
-                    'Precio sugerido por unidad',
-                    '${dinero(resultado.precioSugerido)} por $unidad',
-                    'Precio orientativo para cubrir costos y alcanzar la ganancia proyectada.',
-                    destacado: true,
-                  ),
-                ],
-              ),
-              pw.TableRow(
-                children: [
-                  resultadoCelda(
-                    'Ingresos mensuales',
-                    dinero(resultado.ventasEstimadas),
-                    'Monto que ingresaría si se venden las unidades al precio sugerido.',
-                  ),
-                  resultadoCelda(
-                    'Utilidad mensual estimada',
-                    dinero(resultado.utilidad),
-                    'Ganancia aproximada luego de descontar los costos, suponiendo que se vende toda la producción.',
-                  ),
-                ],
-              ),
-              pw.TableRow(
-                children: [
-                  resultadoCelda(
-                    'Punto de equilibrio',
-                    resultado.puntoEquilibrio == null
-                        ? resultado.motivoPuntoEquilibrioNoDisponible!
-                        : '${numeroArgentino(resultado.puntoEquilibrio!)} $unidadCantidad',
-                    'Cantidad mínima de unidades que deben venderse para cubrir los costos.',
-                  ),
-                  pw.Padding(
-                    padding: const pw.EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 5,
+                  bloque('¿Cuánto te cuesta producir?', [
+                    par('Costos del mes', dinero(resultado.costoTotal)),
+                    par(
+                      'Costo por unidad',
+                      '${dinero(resultado.costoTotalUnitario)} por $unidad',
                     ),
-                    child: pw.Column(
-                      crossAxisAlignment: pw.CrossAxisAlignment.start,
-                      children: [
-                        pw.Text(
-                          'Costo variable unitario',
-                          style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-                        ),
-                        pw.Text(
-                          '${dinero(resultado.costoVariableUnitario)} por $unidad',
-                        ),
-                        pw.SizedBox(height: 4),
-                        pw.Text(
-                          'Ganancia por unidad',
-                          style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-                        ),
-                        pw.Text(dinero(resultado.gananciaPorUnidad)),
-                      ],
+                    nota('Es el costo de producir $produccion durante el mes.'),
+                  ]),
+                  bloque('Precio sugerido de venta', [
+                    valor(
+                      '${dinero(resultado.precioSugerido)} por $unidad',
+                      tamano: 15,
                     ),
-                  ),
+                    pw.SizedBox(height: 3),
+                    nota(
+                      'Este precio cubre tus costos e incluye el ${porcentaje(calculo.tasaGanancia)} de ganancia que elegiste.',
+                    ),
+                    pw.SizedBox(height: 3),
+                    nota(
+                      resultado.gananciaEstimadaSobreCosto == null
+                          ? resultado.motivoGananciaNoDisponible!
+                          : 'Ganancia proyectada: ${porcentaje(resultado.gananciaEstimadaSobreCosto!)} sobre costos.',
+                    ),
+                  ], destacado: true),
+                ],
+              ),
+              pw.TableRow(
+                children: [
+                  bloque('Si vendés toda tu producción', [
+                    nota(
+                      'Si vendés los $produccion del mes al precio sugerido:',
+                    ),
+                    par(
+                      'Ingresos mensuales · Ingresarías',
+                      dinero(resultado.ventasEstimadas),
+                    ),
+                    par(
+                      'Utilidad mensual estimada',
+                      dinero(resultado.utilidad),
+                    ),
+                    nota(
+                      'Estos valores son estimaciones y suponen que se vende toda la producción.',
+                    ),
+                  ]),
+                  bloque('¿Cuánto necesitás vender para cubrir tus costos?', [
+                    if (equilibrio == null)
+                      nota(resultado.motivoPuntoEquilibrioNoDisponible!)
+                    else ...[
+                      valor('Aproximadamente $aproximado $unidadCantidad'),
+                      pw.SizedBox(height: 3),
+                      nota(
+                        '${numeroArgentino(equilibrio)} $unidadCantidad exactos',
+                      ),
+                      pw.SizedBox(height: 3),
+                      nota(
+                        'A partir de esa cantidad cubrís los costos del mes.',
+                      ),
+                    ],
+                  ]),
                 ],
               ),
             ],
+          ),
+          titulo('Otros datos del cálculo'),
+          par(
+            'Costo variable por $unidad',
+            dinero(resultado.costoVariableUnitario),
+          ),
+          par(
+            'Ganancia proyectada por $unidad',
+            dinero(resultado.gananciaPorUnidad),
           ),
           pw.SizedBox(height: 6),
           pw.Text(
