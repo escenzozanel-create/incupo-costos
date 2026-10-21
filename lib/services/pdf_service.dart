@@ -23,6 +23,15 @@ class PdfService {
     final negrita = pw.Font.ttf(
       await rootBundle.load('assets/fonts/Lato-Bold.ttf'),
     );
+    pw.MemoryImage? logo;
+    try {
+      final datos = await rootBundle.load('assets/images/incupo_logo.png');
+      logo = pw.MemoryImage(
+        datos.buffer.asUint8List(datos.offsetInBytes, datos.lengthInBytes),
+      );
+    } catch (_) {
+      logo = null;
+    }
     final doc = pw.Document(
       title: 'INCUPO Costos - ${calculo.producto}',
       author: 'INCUPO',
@@ -128,6 +137,10 @@ class PdfService {
             pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
               children: [
+                if (logo != null) ...[
+                  pw.Image(logo, width: 64, height: 32, fit: pw.BoxFit.contain),
+                  pw.SizedBox(width: 12),
+                ],
                 pw.Text(
                   'INCUPO Costos',
                   style: pw.TextStyle(
@@ -150,16 +163,26 @@ class PdfService {
         ),
         footer: (context) => pw.Padding(
           padding: const pw.EdgeInsets.only(top: 12),
-          child: pw.Row(
-            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+          child: pw.Column(
+            crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Text(
-                'INCUPO | Cálculo orientativo mensual',
-                style: const pw.TextStyle(fontSize: 9),
+                'Desarrollado por estudiantes de 3er año de la Escuela de Comercio – 2026',
+                style: const pw.TextStyle(fontSize: 8),
               ),
-              pw.Text(
-                'Página ${context.pageNumber} de ${context.pagesCount}',
-                style: const pw.TextStyle(fontSize: 9),
+              pw.SizedBox(height: 5),
+              pw.Row(
+                mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                children: [
+                  pw.Text(
+                    'INCUPO | Cálculo orientativo mensual',
+                    style: const pw.TextStyle(fontSize: 9),
+                  ),
+                  pw.Text(
+                    'Página ${context.pageNumber} de ${context.pagesCount}',
+                    style: const pw.TextStyle(fontSize: 9),
+                  ),
+                ],
               ),
             ],
           ),
@@ -242,7 +265,7 @@ class PdfService {
           par('Utilidad mensual estimada', dinero(resultado.utilidad)),
           if (resultado.gananciaEstimadaSobreCosto != null)
             par(
-              'Ganancia estimada sobre costos',
+              'Ganancia proyectada sobre costos',
               porcentaje(resultado.gananciaEstimadaSobreCosto!),
             )
           else

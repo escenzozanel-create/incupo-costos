@@ -15,7 +15,7 @@ class IndicadorPasos extends StatelessWidget {
         Semantics(
           header: true,
           child: Text(
-            'Paso $paso de 5 · $titulo',
+            'Paso $paso de 5 ${paso == 2 || paso == 3 ? '–' : '·'} $titulo',
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),

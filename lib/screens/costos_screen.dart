@@ -59,17 +59,32 @@ class CostosScreen extends StatelessWidget {
       atras: atras,
       continuar: continuar,
       children: [
-        Text(
-          variable
-              ? 'Son los gastos que aumentan o disminuyen según cuánto producís.'
-              : 'Son los gastos que tenés aunque no produzcas.',
-        ),
-        const Text(
-          'Usá importes del mes. No cargues el mismo gasto en ambas categorías.',
-        ),
-        if (!variable)
+        if (variable)
+          const Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text:
+                      'Son los costos que aumentan o disminuyen según la cantidad que producís.\n\n'
+                      'Cargá la cantidad de cada insumo que utilizás por mes y su precio unitario.\n\n',
+                ),
+                TextSpan(
+                  text: 'Importante:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text:
+                      ' la cantidad y el precio deben corresponder a la misma unidad de medida. Por ejemplo, si cargás 1 bolsa de harina, poné el precio de esa bolsa, no el precio por kilo.\n\n'
+                      'Si te resulta difícil calcular el consumo mensual, podés estimar cuánto utilizás por semana y multiplicarlo por 4.',
+                ),
+              ],
+            ),
+          )
+        else
           const Text(
-            'Ejemplos: alquiler, servicios, remuneraciones o amortización de bienes. La amortización es manual: cantidad 1 y precio igual al importe mensual.',
+            'Son los gastos vinculados a tu emprendimiento que tenés que pagar aunque no produzcas.\n\n'
+            'Por ejemplo: monotributo, alquiler y desgaste de herramientas y maquinarias (amortización).\n\n'
+            'Cargá cada gasto y su monto mensual. Si el gasto es mensual, poné 1 en cantidad. Si corresponde a varias unidades, indicá cuántas utilizás por mes.',
           ),
         if (controller.costos(tipo).isEmpty)
           const Text(

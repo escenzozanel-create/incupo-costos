@@ -107,7 +107,7 @@ class ResultadoScreen extends StatelessWidget {
             'Ganancia esperada sobre costos': porcentaje(
               controller.tasaGanancia,
             ),
-            'Ganancia estimada sobre costos':
+            'Ganancia proyectada sobre costos':
                 r.gananciaEstimadaSobreCosto == null
                 ? r.motivoGananciaNoDisponible!
                 : porcentaje(r.gananciaEstimadaSobreCosto!),
