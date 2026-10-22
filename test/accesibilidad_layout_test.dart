@@ -61,13 +61,23 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(LogoInstitucional), findsNWidgets(3));
     expect(find.byTooltip('Información institucional'), findsNothing);
-    expect(find.text('Escuela Superior de Comercio N°43'), findsNothing);
+    final escuela = find.text('Escuela Superior de Comercio N°43');
+    expect(escuela, findsOneWidget);
     expect(tester.takeException(), isNull);
     final creditos = find.text(
       'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',
     );
     await tester.ensureVisible(creditos);
     await tester.pumpAndSettle();
+    expect(creditos, findsOneWidget);
+    expect(
+      tester.getBottomLeft(find.byType(LogoInstitucional).last).dy,
+      lessThanOrEqualTo(tester.getTopLeft(escuela).dy),
+    );
+    expect(
+      tester.getBottomLeft(escuela).dy,
+      lessThanOrEqualTo(tester.getTopLeft(creditos).dy),
+    );
     await captura(tester, key, 'inicio-institucional');
     await tester.ensureVisible(find.byType(LogoInstitucional).first);
     await tester.pumpAndSettle();

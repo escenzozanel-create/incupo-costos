@@ -256,7 +256,7 @@ class PdfService {
                   ],
                   pw.Expanded(
                     child: pw.Text(
-                      'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',
+                      'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software - Escuela Superior de Comercio N°43 - 2026',
                       style: const pw.TextStyle(fontSize: 8),
                     ),
                   ),

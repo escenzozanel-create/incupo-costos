@@ -47,7 +47,7 @@ for name, snippets in expected.items():
     # también sin espacios para verificar el contenido con ambos lectores.
     compact = ''.join(''.join(page.extract_text().split()) for page in reader.pages)
     for snippet in ['Calculadora de Costos',
-                    'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026',
+                    'Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software - Escuela Superior de Comercio N°43 - 2026',
                     'Precio sugerido', 'Costos variables', 'Costos fijos',
                     'Fecha de emisión: 28/09/2026',
                     '¿Cuánto necesitás vender para cubrir tus costos?', *explicaciones, *snippets]:
@@ -79,9 +79,10 @@ for name, snippets in expected.items():
         assert len(encabezados) == 1, (name, n, 'Debe aparecer un título')
         centro_titulo = (encabezados[0].x0 + encabezados[0].x1) / 2
         assert abs(centro_titulo - page.rect.width / 2) < 0.5, (name, n, 'Título descentrado')
-        creditos = [line for line in page.get_text().splitlines() if 'Desarrollado por' in line]
-        assert creditos == ['Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software-2026'], (name, n, 'Créditos incorrectos')
-        assert 'Escuela Superior de Comercio' not in page.get_text(), (name, n, 'Nombre de escuela duplicado')
+        creditos = [' '.join(block[4].split()) for block in page.get_text('blocks')
+                    if 'Desarrollado por' in block[4]]
+        assert creditos == ['Desarrollado por alumnos de 3er año Tec. Sup. en Desarrollo de Software - Escuela Superior de Comercio N°43 - 2026'], (name, n, 'Créditos incorrectos')
+        assert page.get_text().count('Escuela Superior de Comercio') == 1, (name, n, 'Nombre de escuela duplicado')
         assert f'Página {n} de {len(reader.pages)}' in ' '.join(page.get_text().split())
         assert len(page.get_image_info()) == 3, (name, n, 'Deben aparecer los tres logos institucionales')
     for i, page in enumerate(doc):
